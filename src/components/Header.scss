@@ -3,6 +3,34 @@ h1 {
     font-size: 36px;
     font-family: 'Pathway Gothic One', sans-serif;
     margin-top: 0;
-    padding: 10px;
     text-transform: uppercase;
+}
+
+.faveBtn {
+    border-radius: 15px;
+    display: flex;
+    float: right;
+    font-size: 14px;
+    height: 30px;
+    justify-content: center;
+    width: 130px;
+
+    &:hover {
+        background-color: black;
+        border-radius: 18px;
+        color: #feda4a;
+        font-family: 'Pathway Gothic One', sans-serif;
+        font-size: 16px;
+        height: 40px;
+        width: 150px;
+        .faveCounter {
+            color: white;
+        }
+    }
+}
+
+.faveCounter {
+    color: black;
+    font-weight: bold;
+    margin-left: 5px;
 }

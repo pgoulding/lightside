@@ -31,10 +31,15 @@
 
 .clickedContainer {
   flex-direction: column;
+  transition: .2s;
   width: 30%;
 }
 
 
 .active {
+  height: 50px;
+}
+
+.icon {
   height: 50px;
 }

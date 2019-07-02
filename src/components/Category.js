@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Category = ({category}) => {
+const Category = ({title, changeView}) => {
     return (
         <div>
-            <button>{category}</button>
+            <button className='selectCategoryBtn' onClick={changeView}>
+                {title}
+                
+            </button>
         </div>
     )
 }

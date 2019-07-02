@@ -1,3 +1,7 @@
+header {
+    padding: 30px;
+}
+
 h1 {
     color: #feda4a;
     font-size: 36px;
@@ -13,6 +17,7 @@ h1 {
     font-size: 14px;
     height: 30px;
     justify-content: center;
+    margin-bottom: 15px;
     width: 130px;
 
     &:hover {

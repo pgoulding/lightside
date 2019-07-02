@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MovieIntro from './MovieIntro'
+import Header from './components/Header'
 import People from './People'
 import Planets from './Planets'
 import Vehicles from './Vehicles'
@@ -13,7 +14,6 @@ export class App extends Component {
     super()
     this.state = {
       selected: false
-
     }
   }
 
@@ -27,6 +27,7 @@ export class App extends Component {
 
     return (
       <div className='App'>
+        <Header />
         <Category title='People' changeView={this.changeView}/>
         <Category title='Planets' changeView={this.changeView}/>
         <Category title='Vehicles' changeView={this.changeView}/>

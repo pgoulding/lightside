@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import MovieIntro from './MovieIntro'
+import Header from './components/Header'
 import People from './People'
 import Planets from './Planets'
 import Vehicles from './Vehicles'
+import Category from './components/Category'
 import swapi from './swapi'
 import './App.css';
 
@@ -14,7 +16,8 @@ export class App extends Component {
       category:'films',
       film:'',
       renderedPage:'',
-      pageNumber: null
+      pageNumber: null,
+      selected: false
     }
   }
 
@@ -33,11 +36,31 @@ export class App extends Component {
     }
   }
 
+  changeView = () => {
+    this.setState({ selected: !this.state.selected })
+  }
+
+
   render() {
+    const categories = ['People', 'Planets', 'Vehicles'];
+    const categoryButtons = categories.map(category => {
+      return (
+        <Category
+          key={category}
+          title={category}
+          changeView={this.changeView}
+          />
+      )
+    })
+   //Add title attribute to Header for movie once API is figured out
+
     return (
-      <main className="App"> 
-        { this.renderPage() }
-      </main>
+      <div className='App'>
+        <Header />
+        <section className='btnContainer'>
+          {categoryButtons}
+        </section>
+      </div>
     )
   }
 

@@ -23,14 +23,23 @@ export class App extends Component {
 
 
   render() {
-   //will add variables here to 
+    const categories = ['People', 'Planets', 'Vehicles'];
+    const categoryButtons = categories.map(category => {
+      return (
+        <Category
+          key={category}
+          title={category}
+          />
+      )
+    })
+   //Add title attribute to Header for movie once API is figured out
 
     return (
       <div className='App'>
         <Header />
-        <Category title='People' changeView={this.changeView}/>
-        <Category title='Planets' changeView={this.changeView}/>
-        <Category title='Vehicles' changeView={this.changeView}/>
+        <section className='btnContainer'>
+          {categoryButtons}
+        </section>
       </div>
     )
   }

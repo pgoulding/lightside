@@ -3,12 +3,12 @@ import './Category.scss';
 
 const Category = ({title, changeView}) => {
     return (
-        <div>
+        <section className='btnContainer'>
             <button className='selectCategoryBtn' onClick={changeView}>
+                <img src='' alt=''/>
                 {title}
-
             </button>
-        </div>
+        </section>
     )
 }
 

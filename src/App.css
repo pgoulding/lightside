@@ -1,5 +1,11 @@
 .App {
-  background-image: url('../public/images/nasa-Q1p7bh3SHj8-unsplash.jpg');
+  background-image: url('./images/nasa-Q1p7bh3SHj8-unsplash.jpg');
+  background-size: cover;
+  min-height: 100vh;
   text-align: center;
 }
 
+.btnContainer {
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 import './Header.scss';
 
-const Header = (props) => {
+const Header = () => {
     return (
         <header>
-            {props.movieTitle}
-            <button>View Favorites<span className='faveCounter'>{props.favorites}</span></button>
+            <h1>A New Hope</h1>
+            <button>View Favorites<span className='faveCounter'>0</span></button>
         </header>
     )
 }

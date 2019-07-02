@@ -1,3 +1,7 @@
+header {
+    padding: 30px;
+}
+
 h1 {
     color: #feda4a;
     font-size: 36px;
@@ -10,18 +14,20 @@ h1 {
     border-radius: 15px;
     display: flex;
     float: right;
-    font-size: 14px;
-    height: 30px;
+    font-family: 'AnakinMono', sans-serif;
+    font-size: 13px;
+    height: 50px;
     justify-content: center;
+    margin-bottom: 15px;
     width: 130px;
 
     &:hover {
         background-color: black;
         border-radius: 18px;
         color: #feda4a;
-        font-family: 'Pathway Gothic One', sans-serif;
+        font-family: 'AnakinMono', sans-serif;
         font-size: 16px;
-        height: 40px;
+        height: 60px;
         width: 150px;
         .faveCounter {
             color: white;

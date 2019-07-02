@@ -13,7 +13,27 @@ export class App extends Component {
   constructor () {
     super()
     this.state = {
-      selected: false
+      selected: false,
+      category:'films',
+      film:'',
+      renderedPage:'',
+      pageNumber: null
+    }
+  }
+
+  componentDidMount(){
+    const url = `https://swapi.co/api/${this.state.category}/?page=${this.state.pageNumber}`
+
+  }
+
+  renderPage = () => {
+    if(this.state.renderedPage === 'intro') {
+      return <MovieIntro films={this.state.films} />
+    } else if (this.state.renderedPage === 'home') {
+      return 
+    } else {
+      return <h3>NOTHING HERE</h3>
+>>>>>>> boilerplate
     }
   }
 
@@ -44,7 +64,7 @@ export class App extends Component {
       </div>
     )
   }
-  
+
 }
 
 export default App

@@ -29,6 +29,7 @@ export class App extends Component {
         <Category
           key={category}
           title={category}
+          changeView={this.changeView}
           />
       )
     })

@@ -14,16 +14,20 @@ export class App extends Component {
     super()
     this.state = {
       selected: false,
-      category:'films',
-      film:'',
-      renderedPage:'',
-      pageNumber: null
+      category:'people',
+      next:'',
+      previous:'',
+      data:'',
+      pageNumber: ''
     }
   }
 
   componentDidMount(){
     const url = `https://swapi.co/api/${this.state.category}/?page=${this.state.pageNumber}`
-
+    fetch(url)
+      .then(response => response.json())
+      .then(swData => this.setState({ data: swData.results, next: swData.next, previous:swData.previous }))
+      .catch(err => console.error(err))
   }
 
   renderPage = () => {
@@ -33,7 +37,6 @@ export class App extends Component {
       return 
     } else {
       return <h3>NOTHING HERE</h3>
->>>>>>> boilerplate
     }
   }
 

@@ -14,7 +14,7 @@ export class App extends Component {
     super()
     this.state = {
       selected: false,
-      category:'people',
+      category:'films',
       next:'',
       previous:'',
       data:'',
@@ -28,16 +28,6 @@ export class App extends Component {
       .then(response => response.json())
       .then(swData => this.setState({ data: swData.results, next: swData.next, previous:swData.previous }))
       .catch(err => console.error(err))
-  }
-
-  renderPage = () => {
-    if(this.state.renderedPage === 'intro') {
-      return <MovieIntro films={this.state.films} />
-    } else if (this.state.renderedPage === 'home') {
-      return 
-    } else {
-      return <h3>NOTHING HERE</h3>
-    }
   }
 
   changeView = () => {

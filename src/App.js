@@ -27,6 +27,11 @@ export class App extends Component {
     this.setState({ category: page})
   }
 
+  componentDidMount(){
+    const url = `https://swapi.co/api/${this.state.category}/?page=${this.state.pageNumber}`
+
+  }
+
 
   render() {
     const People = () => {
@@ -69,7 +74,7 @@ export class App extends Component {
       </div>
     )
   }
-  
+
 }
 
 export default App

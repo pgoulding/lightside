@@ -6,15 +6,19 @@
 }
 
 .selectCategoryBtn {
+  height: 300px;
+  width: 300px;
+}
+
+.selectCategoryBtn,
+.active {
   background-color: #b4b4b4;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23d8d7db' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   border-radius: 50%;
   color: black;
   font-family: 'AnakinMono', sans-serif;
   font-size: 32px;
-  height: 300px;
   opacity: 0.8;
-  width: 300px;
 }
 
 .selectCategoryBtnText:hover {
@@ -33,13 +37,15 @@
 
 .clickedContainer {
   flex-direction: column;
-  transition: .2s;
+  transition: .5s;
   width: 30%;
 }
 
 
 .active {
+  color: #feda4a;
   height: 50px;
+  width: 50px;
 }
 
 .icon {

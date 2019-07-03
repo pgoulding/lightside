@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
-const MovieIntro = ({ films }) => {
-    
+import React from 'react'
+import Crawl from 'react-star-wars-crawl'
+import 'react-star-wars-crawl/lib/index.css'
 
+const MovieIntro = ({ films }) => {
+  const {episode_id, title, opening_crawl} = films
   return (
-    <div className="scroller-text">
-      <h2>{films.title}</h2>
-      <p>{films.opening_crawl}</p>
-    </div>
+    <Crawl
+      title={episode_id}
+      subTitle={title}
+      text={opening_crawl}
+    />
   )
 }
 

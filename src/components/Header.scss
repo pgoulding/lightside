@@ -5,7 +5,7 @@ header {
 h1 {
     color: #feda4a;
     font-size: 36px;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: 'Galaxy 1', sans-serif;
     margin-top: 0;
     text-transform: uppercase;
 }
@@ -24,6 +24,7 @@ h1 {
     &:hover {
         background-color: black;
         border-radius: 18px;
+        box-shadow: 5px 10px 18px black;
         color: #feda4a;
         font-family: 'AnakinMono', sans-serif;
         font-size: 16px;

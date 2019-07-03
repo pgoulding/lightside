@@ -17,8 +17,10 @@
   width: 300px;
 }
 
-.selectCategoryBtn:hover {
+.selectCategoryBtnText:hover {
   color: #feda4a;
+  margin: 7px;
+  text-shadow: 5px 5px black;
 }
 
 .btnContainer {

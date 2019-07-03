@@ -60,13 +60,22 @@ export class App extends Component {
         <section className='btnContainer'>
         <Router>
           <Link to='/People'>
-            <button className='selectCategoryBtn' onClick={() => this.selectCategory('people')}>People<img className='icon' src={human} alt=''/></button>
+            <button className='selectCategoryBtn' onClick={() => this.selectCategory('people')}>
+              <span className='selectCategoryBtnText'>People</span>
+              <img className='icon' src={human} alt=''/>
+            </button>
           </Link>
           <Link to='/Planets'>
-            <button className='selectCategoryBtn' onClick={() => this.selectCategory('planets')}>Planets<img className='icon' src={planet} alt=''/></button>
+            <button className='selectCategoryBtn' onClick={() => this.selectCategory('planets')}>
+              <span className='selectCategoryBtnText'>Planets</span>
+              <img className='icon' src={planet} alt=''/>
+            </button>
           </Link>
           <Link to='/Vehicles'>
-            <button className='selectCategoryBtn' onClick={() => this.selectCategory('vehicles')}>Vehicles<img className='icon' src={vehicle} alt=''/></button>
+            <button className='selectCategoryBtn' onClick={() => this.selectCategory('vehicles')}>
+              <span className='selectCategoryBtnText'>Vehicles</span>
+              <img className='icon' src={vehicle} alt=''/>
+            </button>
           </Link>
           <Route path='People' component={People} />
           <Route path='Planets' component={Planets} />

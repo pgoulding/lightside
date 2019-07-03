@@ -13,10 +13,8 @@ export class App extends Component {
   constructor () {
     super()
     this.state = {
-      selected: false,
-      next:'',
+      showSplash: true,
       film:'',
-      previous:'',
       pageNumber: ''
     }
   }
@@ -36,7 +34,7 @@ export class App extends Component {
       const url = `https://swapi.co/api/${category}/?page=${this.state.pageNumber}`
       fetch(url)
         .then(response => response.json())
-        .then(swData => this.setState({[category]: swData.results, next: swData.next, previous: swData.previous }))
+        .then(swData => this.setState({[category]: swData.results }))
         .catch(err => console.error(err))
     })
   }
@@ -65,9 +63,9 @@ export class App extends Component {
     return (
       <div className='App'>
         <Header />
-        {!this.state.selected && <MovieIntro films={ this.state.film }/>}
-        {!this.state.selected && <button onClick={() => this.setState({ selected: true })}>Take me in!</button>}
-        {this.state.selected && this.buttonConatiner()}
+        {this.state.showSplash && this.state.film && <MovieIntro films={ this.state.film }/>}
+        {this.state.showSplash && <button onClick={() => this.setState({ showSplash: false })}>Take me in!</button>}
+        {!this.state.showSplash && this.buttonConatiner()}
       </div>
     )
   }

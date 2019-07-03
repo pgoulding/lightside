@@ -1,19 +1,15 @@
 import React from 'react'
+import Crawl from 'react-star-wars-crawl'
+import 'react-star-wars-crawl/lib/index.css'
 
 const MovieIntro = ({ films }) => {
-  
-  const findEpisode = (specificMovie) => {
-    if(specificMovie) {
-      return films.find(movie => movie.episode_id === specificMovie)
-    } else {
-      return films.find(movie => movie.episode_id === Math.floor(Math.random() * (7 - 1 + 1)) + 1);
-    }
-  } 
-  
+  const {episode_id, title, opening_crawl} = films
   return (
-    <div>
-      <p>{findEpisode(4).opening_crawl}</p>
-    </div>
+    <Crawl
+      title={episode_id}
+      subTitle={title}
+      text={opening_crawl}
+    />
   )
 }
 

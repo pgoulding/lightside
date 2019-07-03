@@ -1,16 +1,18 @@
 import React from 'react';
 import './Card.scss'
 
-const Card = () => {
-    return (
-        <article className='card'>
-            <h2>Name:</h2>
-            <h3>Homeworld:</h3>
-            <h3>Species:</h3>
-            <h3>Language:</h3>
-            <h3>Population</h3>
-        </article>
-    )
+const Card = (data) => {
+    data.map(item => {
+        return (
+            <article>
+                <h2>{item.name}</h2>
+                <h3>{item.birth_year}</h3>
+                <h3>{item.gender}</h3>
+                <h3>{item.height}</h3>
+                <h3>{item.eye_color}</h3>
+            </article>
+        )
+    })
 }
 
 export default Card;

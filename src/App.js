@@ -3,7 +3,7 @@ import MovieIntro from './MovieIntro'
 import Header from './components/Header'
 import Container from './components/Container'
 import swapi from './swapi'
-import { BrowserRouter as Router, Route, Link } from "react-browser-router";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import human from './images/006-human.svg';
 import planet from './images/007-universe.svg';
@@ -14,49 +14,63 @@ export class App extends Component {
   constructor () {
     super()
     this.state = {
-      category: '',
-      isFavorited: false,
-      data: '',
-      error: ''
+      selected: false,
+      category:'films',
+      next:'',
+      film:'',
+      previous:'',
+      data:'',
+      pageNumber: ''
     }
   }
 
-  // collapseBtns = () => {
-
-  // }
+  componentDidMount(){
+    this.updatePage()
+    const starWarsMovies = `https://swapi.co/api/films/`
+    fetch(starWarsMovies)
+      .then(response => response.json())
+      .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (7 - 1 + 1)) + 1) }))
+      .catch(err => console.error(err))
+  }
 
   selectCategory = (page) => {
     this.setState({ category: page})
+    this.updatePage()
   }
 
-  componentDidMount(){
+  updatePage = () => {
     const url = `https://swapi.co/api/${this.state.category}/?page=${this.state.pageNumber}`
-
+    fetch(url)
+      .then(response => response.json())
+      .then(swData => this.setState({ data: swData.results, next: swData.next, previous: swData.previous }))
+      //.then(swData => this.setState({...this.state, next: swData.next, previous: swData.previous}))
+      .catch(err => console.error(err))
   }
-
 
   render() {
+    
     const People = () => {
       return ( 
-        <Container data={this.state.people}/>
+        <Container data={this.state.data}/>
       )
     }
 
     const Planets = () => {
       return (
-        <Container data={this.state.planets}/>
+        <Container data={this.state.data}/>
       )
     }
 
     const Vehicles = () => {
       return (
-        <Container data={this.state.vehicles} />
+        <Container data={this.state.data} />
       )
     }
 
     return (
       <div className='App'>
         <Header />
+        <MovieIntro films={ this.state.film }/>
         <section className='btnContainer'>
         <Router>
           <Link to='/People'>
@@ -86,7 +100,6 @@ export class App extends Component {
       </div>
     )
   }
-
 }
 
 export default App

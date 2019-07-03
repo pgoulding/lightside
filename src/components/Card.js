@@ -1,11 +1,11 @@
 import React from 'react';
 import './Card.scss'
 
-const Card = () => {
+const Card = ({ data }) => {
     return (
         <article className='card'>
-            <h2>Name:</h2>
-            <h3>Homeworld:</h3>
+            <h2>Name: {data.name}</h2>
+            <h3>{data.birth_year && `Birth Year: ${data.birth_year}` || data.terrain && `Terrain: ${data.terrain}`}</h3>
             <h3>Species:</h3>
             <h3>Language:</h3>
             <h3>Population</h3>

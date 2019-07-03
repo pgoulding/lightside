@@ -17,6 +17,7 @@ export class App extends Component {
       selected: false,
       category:'films',
       next:'',
+      film:'',
       previous:'',
       data:'',
       pageNumber: ''
@@ -24,40 +25,51 @@ export class App extends Component {
   }
 
   componentDidMount(){
+    this.updatePage()
+    const starWarsMovies = `https://swapi.co/api/films/`
+    fetch(starWarsMovies)
+      .then(response => response.json())
+      .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (7 - 1 + 1)) + 1) }))
+      .catch(err => console.error(err))
+  }
+
+  selectCategory = (page) => {
+    this.setState({ category: page})
+    this.updatePage()
+  }
+
+  updatePage = () => {
     const url = `https://swapi.co/api/${this.state.category}/?page=${this.state.pageNumber}`
     fetch(url)
       .then(response => response.json())
-      .then(swData => this.setState({ data: swData.results, next: swData.next, previous:swData.previous }))
+      .then(swData => this.setState({ data: swData.results, next: swData.next, previous: swData.previous }))
       .catch(err => console.error(err))
   }
-  
-  selectCategory = (page) => {
-    this.setState({ category: page})
-  }
-
 
   render() {
+    
     const People = () => {
       return ( 
-        <Container data={this.state.people}/>
+        <Container data={this.state.data}/>
       )
     }
 
     const Planets = () => {
       return (
-        <Container data={this.state.planets}/>
+        <Container data={this.state.data}/>
       )
     }
 
     const Vehicles = () => {
       return (
-        <Container data={this.state.vehicles} />
+        <Container data={this.state.data} />
       )
     }
 
     return (
       <div className='App'>
         <Header />
+        <MovieIntro films={ this.state.film }/>
         <section className='btnContainer'>
         <Router>
           <Link to='/People'>

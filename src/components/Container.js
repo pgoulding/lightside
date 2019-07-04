@@ -1,32 +1,14 @@
 import React from 'react';
 import Card from './Card'
-import { Component } from 'react';
 
-// class Container extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             clicked: false
-//         }
-//     }
-
-// }
-
-const Container = (data) => {
-//    const peopleCards = data.map(item => {
-//         return (          
-//             <Card 
-//                 name={item.name}
-//                 birthYear={item.birth_year}
-//                 gender={item.gender}
-//                 height={item.height}
-//                 eyeColor={item.eye_color}
-//             />
-//         )
-//     })
+const Container = ({ data }) => {
+    let swData = data.map(ele => {
+        return <Card data={ele}/>
+    })
+    console.log(swData)
     return (
         <section className='cardContainer'>
-            <Card />
+            { swData }
         </section>
     )
 }

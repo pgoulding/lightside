@@ -1,4 +1,5 @@
 import React from 'react';
+import faveInactive from '../images/002-prize.svg';
 import './Card.scss'
 
 const Card = ({ data }) => {

@@ -73,9 +73,10 @@ export class App extends Component {
     )
   }
 
-  routeContainer = () => {
+  cardsContainer = () => {
     return (
       <section>
+        {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
         <Route path='/People' render={() => <Container data={this.state.people} />} />
         <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
         <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
@@ -90,8 +91,7 @@ export class App extends Component {
         {!this.state.showSplash && <Header />}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         {!this.state.showSplash && this.buttonConatiner() }
-        {!this.state.showSplash && this.routeContainer()}
-        
+        {!this.state.showSplash && this.cardsContainer()}
       </main>
     )
   }

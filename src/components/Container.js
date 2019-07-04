@@ -13,20 +13,20 @@ import { Component } from 'react';
 // }
 
 const Container = (data) => {
-   const peopleCards = data.map(item => {
-        return (          
-            <Card 
-                name={item.name}
-                birthYear={item.birth_year}
-                gender={item.gender}
-                height={item.height}
-                eyeColor={item.eye_color}
-            />
-        )
-    })
+//    const peopleCards = data.map(item => {
+//         return (          
+//             <Card 
+//                 name={item.name}
+//                 birthYear={item.birth_year}
+//                 gender={item.gender}
+//                 height={item.height}
+//                 eyeColor={item.eye_color}
+//             />
+//         )
+//     })
     return (
         <section className='cardContainer'>
-            {peopleCards}
+            <Card />
         </section>
     )
 }

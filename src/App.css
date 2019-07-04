@@ -37,7 +37,7 @@
 
 .clickedContainer {
   flex-direction: column;
-  transition: .5s;
+  transition: 2s;
   width: 30%;
 }
 

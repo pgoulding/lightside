@@ -10,14 +10,14 @@ const MovieIntro = ({ films, toggleSplash }) => {
     return epsiodeNumerals[episode_id]
   }
   return (
-    <body>
+    <article>
       <Crawl
         title={`Episode ${swapEpisodeNum()}`}
         subTitle={title}
         text={opening_crawl}
       />
       <button className="btn__hide-splash" onClick={() => toggleSplash()}>Take me in!</button>
-    </body>
+    </article>
   )
 }
 

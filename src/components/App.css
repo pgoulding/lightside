@@ -31,7 +31,6 @@
   display: flex;
   justify-content: space-around;
   padding: 30px;
-  position: absolute;
   width: 100%;
 }
 

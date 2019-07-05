@@ -41,32 +41,36 @@ export class App extends Component {
 
   buttonConatiner = () => {
     return (
-      <section className='btnContainer'>
-        <Link to='/People'>
-          <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
-        </Link>
-        <Link to='/Planets'>
-          <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
-        </Link>
-        <Link to='/Vehicles'>
-          <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
-        </Link>
-        <Route path='/People' render={() => <Container data={this.state.people} />} />
-        <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
-        <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
-      </section>
+      <article>
+        <nav className='btnContainer'>
+          <Link to='/People'>
+            <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
+          </Link>
+          <Link to='/Planets'>
+            <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
+          </Link>
+          <Link to='/Vehicles'>
+            <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
+          </Link>
+          </nav>
+          <section>
+          <Route path='/People' render={() => <Container data={this.state.people} />} />
+          <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
+          <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
+        </section>
+      </article>
     )
   }
 
   render() {
 
     return (
-      <div className='App'>
+      <main className='App'>
         <Header />
         {this.state.showSplash && this.state.film && <MovieIntro films={ this.state.film }/>}
         {this.state.showSplash && <button onClick={() => this.setState({ showSplash: false })}>Take me in!</button>}
         {!this.state.showSplash && this.buttonConatiner()}
-      </div>
+      </main>
     )
   }
 }

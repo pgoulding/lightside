@@ -28,11 +28,20 @@ import './Container.scss'
 //     }
 // }
 
-const Container = ({ data, toggleFavorite }) => {
+// const Container = ({ data, toggleFavorite }) => {
+//     let swData = data.map(ele => {
+//         return <Card toggleFavorite={toggleFavorite} data={ele}/>
+const Container = ({ data, type, toggleFavorite }) => {
+    console.log('Container: ', data)
     let swData = data.map(ele => {
-        return <Card toggleFavorite={toggleFavorite} data={ele}/>
+        return <Card 
+        toggleFavorite={toggleFavorite} 
+        data={ele} 
+        type={type}
+        id={Date.now()}
+        key={Date.now()}/>
     })
-    console.log(swData)
+
     return (
         <section className='cardContainer'>
             { swData }

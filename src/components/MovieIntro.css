@@ -1,0 +1,10 @@
+.btn__hide-splash {
+  position: absolute;
+  top:10px;
+  left:10px;
+  z-index: 2;
+  border-radius: 50%;
+  height:100px;
+  width: 100px;
+  
+}

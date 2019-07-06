@@ -7,7 +7,7 @@ import './App.css';
 import human from '../images/006-human.svg';
 import planet from '../images/007-universe.svg';
 import vehicle from '../images/002-star-wars.svg';
-
+import DetailsPage from './DetailsPage'
 
 export class App extends Component {
   constructor () {
@@ -15,8 +15,10 @@ export class App extends Component {
     this.state = {
       showSplash: true,
       film:'',
+      selected:false,
       pageNumber: '',
-      selected: false
+      isFavorited: false,
+      favorites: []
     }
   }
 
@@ -40,34 +42,93 @@ export class App extends Component {
     })
   }
 
-  toggleContainer = () => {
-    this.setState({selected: !this.state.selected})
+  changeButtons = () => {
+    this.setState({selected:true})
   }
 
-   toggleFavorite = () => {
-        this.setState({ isFavorited: !this.state.isFavorited})
-    }
+  toggleSplash = () => {
+    this.setState({ showSplash: false })
+  }
+
+  toggleFavorite = () => {
+    this.setState({ isFavorited: !this.state.isFavorited})
+  }
 
   buttonConatiner = () => {
     return (
-      <article>
-        <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
-          <Link to='/People'>
-            <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
-          </Link>
-          <Link to='/Planets'>
-            <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
-          </Link>
-          <Link to='/Vehicles'>
-            <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
-          </Link>
-          </nav>
-          <section>
-          <Route path='/People' render={() => <Container toggleFavorite ={this.toggleFavorite} data={this.state.people} />} />
-          <Route path='/Planets' render={() => <Container toggleFavorite ={this.toggleFavorite} data={this.state.planets} />} />
-          <Route path='/Vehicles' render={() => <Container toggleFavorite ={this.toggleFavorite} data={this.state.vehicles} />} />
-        </section>
-      </article>
+      <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
+        <Link to='/People'>
+          <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
+            <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>People</span>
+            <img className='icon' src={human} alt='' />
+          </button>
+        </Link>
+        <Link to='/Planets' >
+          <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
+            <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>Planets</span>
+            <img className='icon' src={planet} alt='' />
+          </button>
+        </Link>
+        <Link to='/Vehicles'>
+          <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
+            <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>Vehicles</span>
+            <img className='icon' src={vehicle} alt='' />
+          </button>
+        </Link>
+      </nav>
+    )
+  }
+
+  cardsContainer = () => {
+    const people = this.state.people;
+    const planets = this.state.planets;
+    const vehicles = this.state.vehicles;
+    return (
+      <section>
+        {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
+        <Route exact path='/People' render={() => <Container toggleFavorite={this.toggleFavorite} data={people} type={'People'} />} />
+        <Route exact path='/Planets' render={() => <Container toggleFavorite={this.toggleFavorite} data={planets} type={'Planets'} />} />
+        <Route exact path='/Vehicles' render={() => <Container toggleFavorite={this.toggleFavorite} data={vehicles} type={'Vehicles'} />} />
+
+        <Route exact path='/People/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificPerson = people.find(person => name === person.name)
+          return specificPerson && <DetailsPage data={specificPerson} type={'People'} key={name} />
+        }} />
+
+        <Route exact path='/Planets/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificPlanet = planets.find(planet => name === planet.name)
+          return specificPlanet && <DetailsPage data={specificPlanet} type={'Planets'} key={name} />
+        }} />
+
+        <Route exact path='/Vehicles/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
+          return specificVehicle && <DetailsPage data={specificVehicle} type={'Vehicles'} key={name} />
+        }} />
+      </section>
+
+//       <article>
+//         <nav className='btnContainer'>
+//           <Link to='/People'>
+//             <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
+//           </Link>
+//           <Link to='/Planets'>
+//             <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
+//           </Link>
+//           <Link to='/Vehicles'>
+//             <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
+//           </Link>
+//           </nav>
+//           <section>
+//           <Route path='/People' render={() => <Container data={this.state.people} />} />
+//           <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
+//           <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
+//         </section>
+//       </article>
+
+
     )
   }
 
@@ -75,10 +136,12 @@ export class App extends Component {
 
     return (
       <main className='App'>
-        <Header />
-        {this.state.showSplash && this.state.film && <MovieIntro films={ this.state.film }/>}
-        {this.state.showSplash && <button onClick={() => this.setState({ showSplash: false })}>Take me in!</button>}
-        {!this.state.showSplash && this.buttonConatiner()}
+        {!this.state.showSplash && <Header />}
+        {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
+        <main className= 'clickedMain' >
+        {!this.state.showSplash && this.buttonConatiner() }
+        {!this.state.showSplash && this.cardsContainer()}
+        </main>
       </main>
     )
   }

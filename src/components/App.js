@@ -102,6 +102,26 @@ export class App extends Component {
           return specificVehicle && <DetailsPage data={specificVehicle} type={'Vehicles'} key={name} />
         }} />
       </section>
+
+//       <article>
+//         <nav className='btnContainer'>
+//           <Link to='/People'>
+//             <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
+//           </Link>
+//           <Link to='/Planets'>
+//             <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
+//           </Link>
+//           <Link to='/Vehicles'>
+//             <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
+//           </Link>
+//           </nav>
+//           <section>
+//           <Route path='/People' render={() => <Container data={this.state.people} />} />
+//           <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
+//           <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
+//         </section>
+//       </article>
+
     )
   }
 

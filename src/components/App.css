@@ -28,16 +28,19 @@
 }
 
 .btnContainer {
-  display: flex;
-  justify-content: space-around;
-  padding: 30px;
-  width: 100%;
+
+  display: grid;
+  grid-gap: 25px;
+  margin: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
 }
 
 .clickedContainer {
   flex-direction: column;
   transition: 2s;
   width: 30%;
+  float: left;
 }
 
 

@@ -15,6 +15,7 @@ export class App extends Component {
     this.state = {
       showSplash: true,
       film:'',
+      selected:false,
       pageNumber: ''
     }
   }
@@ -39,26 +40,48 @@ export class App extends Component {
     })
   }
 
+  changeButtons = () => {
+    this.setState({selected:true})
+  }
+
+  toggleSplash = () => {
+    this.setState({ showSplash: false })
+  }
+
   buttonConatiner = () => {
     return (
-      <article>
-        <nav className='btnContainer'>
-          <Link to='/People'>
-            <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
-          </Link>
-          <Link to='/Planets'>
-            <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
-          </Link>
-          <Link to='/Vehicles'>
-            <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
-          </Link>
-          </nav>
-          <section>
-          <Route path='/People' render={() => <Container data={this.state.people} />} />
-          <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
-          <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
-        </section>
-      </article>
+
+      <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
+        <Link to='/People'>
+          <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
+            <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>People</span>
+            <img className='icon' src={human} alt='' />
+          </button>
+        </Link>
+        <Link to='/Planets' >
+          <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
+            <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>Planets</span>
+            <img className='icon' src={planet} alt='' />
+          </button>
+        </Link>
+        <Link to='/Vehicles'>
+          <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
+            <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>Vehicles</span>
+            <img className='icon' src={vehicle} alt='' />
+          </button>
+        </Link>
+      </nav>
+    )
+  }
+
+  cardsContainer = () => {
+    return (
+      <section>
+        {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
+        <Route path='/People' render={() => <Container data={this.state.people} />} />
+        <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
+        <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
+      </section>
     )
   }
 
@@ -66,10 +89,11 @@ export class App extends Component {
 
     return (
       <main className='App'>
-        <Header />
-        {this.state.showSplash && this.state.film && <MovieIntro films={ this.state.film }/>}
-        {this.state.showSplash && <button onClick={() => this.setState({ showSplash: false })}>Take me in!</button>}
-        {!this.state.showSplash && this.buttonConatiner()}
+
+        {!this.state.showSplash && <Header />}
+        {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
+        {!this.state.showSplash && this.buttonConatiner() }
+        {!this.state.showSplash && this.cardsContainer()}
       </main>
     )
   }

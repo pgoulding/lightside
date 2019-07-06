@@ -3,9 +3,6 @@ import Card from './Card'
 import './Container.scss'
 
 
-
-
-
 // class Container extends React.Component {
 //     constructor() {
 //         super();
@@ -28,18 +25,17 @@ import './Container.scss'
 //     }
 // }
 
-// const Container = ({ data, toggleFavorite }) => {
-//     let swData = data.map(ele => {
-//         return <Card toggleFavorite={toggleFavorite} data={ele}/>
+
 const Container = ({ data, type, toggleFavorite }) => {
     console.log('Container: ', data)
     let swData = data.map(ele => {
         return <Card 
         toggleFavorite={toggleFavorite} 
+        isFavorited
         data={ele} 
         type={type}
         id={Date.now()}
-        key={Date.now()}/>
+        />
     })
 
     return (

@@ -1,13 +1,16 @@
-.card {
+.card,
+.card-detail {
     background-color: #010c4c;
     border-radius: 8px;
     color: white;
-    // height: 250px;
     margin: 15px;
     opacity: 0.9;
-    padding: 5px;
+    padding: 10px;
+    // display: inline-block;
+}
+
+.card {
     width: 200px;
-    display: inline-block;
 }
 
 .card:hover {
@@ -15,6 +18,10 @@
     transform: scale(1.04);
     transform: rotate(2deg);
     transition: all ease-in-out .3s;
+  }
+
+  .card-detail {
+      width: auto; 
   }
 
 .favIcon {

@@ -20,7 +20,7 @@ const Card = ({ data, isFavorited, toggleFavorite, type, id }) => {
     return (
         <article className='card'>
             <img onClick={() => toggleFavorite(id)}src={isFavorited ? favActive : favInactive} className='favIcon' alt='' />
-            <h2>Name: {data.name}</h2>
+            <h2>{data.name}</h2>
             <h3>{
                 (data.birth_year && `Birth Year: ${data.birth_year}` )
                 || (data.terrain && `Terrain: ${data.terrain}`) 

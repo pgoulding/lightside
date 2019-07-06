@@ -50,9 +50,15 @@ export class App extends Component {
     this.setState({ showSplash: false })
   }
 
-  toggleFavorite = () => {
-    this.setState({ isFavorited: !this.state.isFavorited})
-  }
+  toggleFavorite = (id) => {
+      let { favorites } = this.state;
+      let { isFavorited } = this.state;
+      this.setState = {
+        favorites: favorites.push(id),
+        isFavorited: !isFavorited
+      };
+    };
+    // this.setState({ isFavorited: !this.state.isFavorited})
 
   buttonConatiner = () => {
     return (
@@ -136,7 +142,7 @@ export class App extends Component {
 
     return (
       <main className='App'>
-        {!this.state.showSplash && <Header />}
+        {!this.state.showSplash && <Header favorites={this.favorites}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         <main className= 'clickedMain' >
         {!this.state.showSplash && this.buttonConatiner() }

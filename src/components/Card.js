@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 // import faveInactive from '../images/002-prize.svg';
 import './Card.scss'
 
-const Card = ({ data }) => {
+const Card = ({ data, type }) => {
 console.log(data)
 
     return (
@@ -27,6 +29,8 @@ console.log(data)
                 (data.eye_color && `Eye Color: ${data.eye_color}` )
                 || (data.climate && `Climate: ${data.climate}` )
                 || ''}</h3>
+
+            <Link key={data.name} to={`/${type}/${data.name}`}>More Details</Link>
         </article>
     )
 }

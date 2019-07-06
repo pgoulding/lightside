@@ -8,6 +8,7 @@ import human from '../images/006-human.svg';
 import planet from '../images/007-universe.svg';
 import vehicle from '../images/002-star-wars.svg';
 import DetailsPage from './DetailsPage'
+import sortData from './sortData'
 
 export class App extends Component {
   constructor () {
@@ -35,8 +36,9 @@ export class App extends Component {
       const url = `https://swapi.co/api/${category}/?page=${this.state.pageNumber}`
       fetch(url)
         .then(response => response.json())
-        .then(swData => this.setState({[category]: swData.results }))
-        .catch(err => console.error(err))
+        .then(data => sortData(data.results, category))
+        .then(swData => this.setState({[category]: swData }))
+        .catch(err => this.setState({error: err}))
     })
   }
 

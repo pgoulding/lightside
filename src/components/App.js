@@ -50,6 +50,7 @@ export class App extends Component {
 
   buttonConatiner = () => {
     return (
+
       <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
         <Link to='/People'>
           <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
@@ -88,6 +89,7 @@ export class App extends Component {
 
     return (
       <main className='App'>
+
         {!this.state.showSplash && <Header />}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         {!this.state.showSplash && this.buttonConatiner() }

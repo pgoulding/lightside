@@ -9,6 +9,15 @@
     display: inline-block;
 }
 
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    transform: rotate(2deg);
+    transition: all ease-in-out .3s;
+  }
+
 .favIcon {
+    float: right;
     height: 20px;
+    margin: 15px;
 }

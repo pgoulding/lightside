@@ -2,6 +2,7 @@
   background-image: url('../images/nasa-Q1p7bh3SHj8-unsplash.jpg');
   background-size: cover;
   min-height: 100vh;
+  min-width: 100vw;
   text-align: center;
 }
 
@@ -21,9 +22,8 @@
   opacity: 0.8;
 }
 
-.selectCategoryBtnText:hover {
+.selectCategoryBtn:hover {
   color: #feda4a;
-  margin: 7px;
   text-shadow: 5px 5px black;
 }
 

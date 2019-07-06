@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import MovieIntro from './MovieIntro'
 import Header from './Header'
 import Container from './Container'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import './App.css';
 import human from '../images/006-human.svg';
 import planet from '../images/007-universe.svg';
@@ -15,7 +15,8 @@ export class App extends Component {
     this.state = {
       showSplash: true,
       film:'',
-      pageNumber: ''
+      pageNumber: '',
+      selected: false
     }
   }
 
@@ -39,11 +40,18 @@ export class App extends Component {
     })
   }
 
+  toggleContainer = () => {
+    this.setState({selected: !this.state.selected})
+  }
+
+   toggleFavorite = () => {
+        this.setState({ isFavorited: !this.state.isFavorited})
+    }
 
   buttonConatiner = () => {
     return (
       <article>
-        <nav className='btnContainer'>
+        <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
           <Link to='/People'>
             <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
           </Link>
@@ -55,9 +63,9 @@ export class App extends Component {
           </Link>
           </nav>
           <section>
-          <Route path='/People' render={() => <Container data={this.state.people} />} />
-          <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
-          <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
+          <Route path='/People' render={() => <Container toggleFavorite ={this.toggleFavorite} data={this.state.people} />} />
+          <Route path='/Planets' render={() => <Container toggleFavorite ={this.toggleFavorite} data={this.state.planets} />} />
+          <Route path='/Vehicles' render={() => <Container toggleFavorite ={this.toggleFavorite} data={this.state.vehicles} />} />
         </section>
       </article>
     )

@@ -6,6 +6,7 @@ import './Card.scss'
 
 const Card = ({ data, type }) => {
 console.log(data)
+
     return (
         <article className='card'>
             <h2>Name: {data.name}</h2>
@@ -28,6 +29,7 @@ console.log(data)
                 (data.eye_color && `Eye Color: ${data.eye_color}` )
                 || (data.climate && `Climate: ${data.climate}` )
                 || ''}</h3>
+
             <Link key={data.name} to={`/${type}/${data.name}`}>More Details</Link>
         </article>
     )

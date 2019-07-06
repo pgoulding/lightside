@@ -2,11 +2,12 @@ import React from 'react';
 import Card from './Card'
 import './Container.scss'
 
-const Container = ({ data }) => {
+const Container = ({ data, type }) => {
+    console.log('Container: ', data)
     let swData = data.map(ele => {
-        return <Card data={ele}/>
+        return <Card data={ele} type={type}/>
     })
-    console.log(swData)
+
     return (
         <section className='cardContainer'>
             { swData }

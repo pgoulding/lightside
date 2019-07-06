@@ -7,7 +7,7 @@ import './App.css';
 import human from '../images/006-human.svg';
 import planet from '../images/007-universe.svg';
 import vehicle from '../images/002-star-wars.svg';
-
+import DetailsPage from './DetailsPage'
 
 export class App extends Component {
   constructor () {
@@ -74,12 +74,33 @@ export class App extends Component {
   }
 
   cardsContainer = () => {
+    const people = this.state.people;
+    const planets = this.state.planets;
+    const vehicles = this.state.vehicles;
     return (
       <section>
         {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
-        <Route path='/People' render={() => <Container data={this.state.people} />} />
-        <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
-        <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
+        <Route exact path='/People' render={() => <Container data={people} type={'People'} />} />
+        <Route exact path='/Planets' render={() => <Container data={planets} type={'Planets'} />} />
+        <Route exact path='/Vehicles' render={() => <Container data={vehicles} type={'Vehicles'} />} />
+
+        <Route exact path='/People/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificPerson = people.find(person => name === person.name)
+          return specificPerson && <DetailsPage data={specificPerson} type={'People'} key={name} />
+        }} />
+
+        <Route exact path='/Planets/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificPlanet = planets.find(planet => name === planet.name)
+          return specificPlanet && <DetailsPage data={specificPlanet} type={'Planets'} key={name} />
+        }} />
+
+        <Route exact path='/Vehicles/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
+          return specificVehicle && <DetailsPage data={specificVehicle} type={'Vehicles'} key={name} />
+        }} />
       </section>
     )
   }

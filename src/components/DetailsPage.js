@@ -14,7 +14,7 @@ const DetailsPage = ({data, type}) => {
   }
 
   return (
-    <div className="card">
+    <div className="card-detail">
       <Link to={`/${type}`} className='back-btn'>◀ back</Link>
       {detailsCleaner()}
     </div>

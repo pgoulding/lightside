@@ -12,12 +12,6 @@ describe('Movie Intro', () => {
     wrapper = shallow(<MovieIntro  films={results}/>)
   })
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<MovieIntro films={results} />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
   it('should match the snapshot', () => {
     wrapper.instace().findEpisode(4)
     expect(wrapper).toMatchSnapshot()

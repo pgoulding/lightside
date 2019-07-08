@@ -98,48 +98,39 @@ export class App extends Component {
 
     return (
       <section>
-<<<<<<< HEAD
-        {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
-        <Route exact path='/people' render={() => <Container data={people} favoriteCard ={this.favoriteCard} type={'people'} />} />
-        <Route exact path='/planets' render={() => <Container data={planets} favoriteCard={this.favoriteCard} type={'planets'} />} />
-        <Route exact path='/vehicles' render={() => <Container data={vehicles} favoriteCard={this.favoriteCard} type={'vehicles'} />} />
-        {/* <Route exact path = '/favorites' render ={({match}) => } */}
-        <Route exact path='/people/:name' render={({ match }) => {
-=======
-        <Route exact path='/People' render={() => 
+        <Route exact path='/people' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={people} 
-            type={'People'} />} />
-        <Route exact path='/Planets' render={() => 
+            type={'people'} />} />
+        <Route exact path='/planets' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={planets} 
-            type={'Planets'} />} />
-        <Route exact path='/Vehicles' render={() => 
+            type={'planets'} />} />
+        <Route exact path='/vehicles' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={vehicles} 
-            type={'Vehicles'} />} />
-        <Route exact path='/Favorites' render={() => 
+            type={'vehicles'} />} />
+        <Route exact path='/favorites' render={() => 
          <Container 
           addFavorite={this.addFavorite} 
           removeFavorite={this.removeFavorite}
           favorites={favorites} 
           data={favorites} 
-          type={'Favorites'}
+          type={'favorites'}
         />
       } />
 
 
-        <Route exact path='/People/:name' render={({ match }) => {
->>>>>>> master
+        <Route exact path='/people/:name' render={({ match }) => {
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
           return specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} />

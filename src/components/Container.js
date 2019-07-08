@@ -2,12 +2,6 @@ import React from 'react';
 import Card from './Card'
 import './Container.scss'
 
-<<<<<<< HEAD
-const Container = ({ data, type, favoriteCard }) => {
-    console.log('Container: ', data)
-    let swData = data.map(ele => {
-        return <Card data={ele} favoriteCard={favoriteCard} type={type}/>
-=======
 
 const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
     let swData = data.map(ele => {
@@ -20,7 +14,6 @@ const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
         id={ele.id}
         key={ele.id}
         />
->>>>>>> master
     })
 
     return (

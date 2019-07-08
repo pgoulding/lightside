@@ -58,17 +58,6 @@ class Card extends React.Component {
                     (data.height && `Height: ${data.height}`) 
                     || (data.population && `Population: ${data.population}`)
                     || (data.passengers && `Passengers: ${data.passengers}`)
-<<<<<<< HEAD
-                    }</h3>
-                <h3>{ 
-                    (data.eye_color && `Eye Color: ${data.eye_color}` )
-                    || (data.climate && `Climate: ${data.climate}` )
-                    }</h3>
-
-                <Link key={data.name} to={`/${type}/${data.name}`}>More Details</Link>
-        </article>
-    )
-=======
                     || ''}</h3>
                 <h3>{ 
                     (data.eye_color && `Eye Color: ${data.eye_color}` )
@@ -79,7 +68,6 @@ class Card extends React.Component {
             </article>
         )
     }
->>>>>>> master
 }
 
 

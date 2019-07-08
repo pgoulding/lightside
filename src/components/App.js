@@ -26,7 +26,7 @@ export class App extends Component {
     const starWarsMovies = `https://swapi.co/api/films/`
     fetch(starWarsMovies)
     .then(response => response.json())
-    .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (6 - 2 + 1)) + 1) }))
+    .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (7 - 2 + 1)) + 1) }))
     .catch(err => console.error(err))
     this.updatePage()
   }
@@ -146,6 +146,12 @@ export class App extends Component {
           const { name } = match.params
           let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
           return specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} />
+        }} />
+
+        <Route exact path='/favorites/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificFav = favorites.find(fav => name === fav.name)
+          return specificFav && <DetailsPage data={specificFav} type={'favorites'} key={name} />
         }} />
       </section>
 

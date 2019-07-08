@@ -14,7 +14,6 @@ const sortData = (fetchData, category) => {
         homeworld: person.homeworld,
         species: person.species,
         "home world population": person.homeworld,
-        isFavorited: false,
         id: person.created
       }
     })
@@ -26,7 +25,6 @@ const sortData = (fetchData, category) => {
         population: planet.population, 
         climate: planet.climate,
         residents: planet.residents,
-        isFavorited: false,
         id: planet.created
       }
     })

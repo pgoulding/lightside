@@ -1,10 +1,19 @@
 .btn__hide-splash {
+  font-size: 16px;
+  font-family: 'AnakinMono', sans-serif;
+  font-weight: bold;
   position: absolute;
   top:10px;
   left:10px;
   z-index: 2;
   border-radius: 50%;
-  height:100px;
-  width: 100px;
+  height:120px;
+  width: 120px;
   
+}
+
+.btn__hide-splash:hover {
+  background-color: black;
+  color: #feda4a;
+  font-size: 20px;
 }

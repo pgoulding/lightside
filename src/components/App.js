@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import MovieIntro from './MovieIntro'
 import Header from './Header'
 import Container from './Container'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import './App.css';
 import human from '../images/006-human.svg';
 import planet from '../images/007-universe.svg';
@@ -17,7 +17,8 @@ export class App extends Component {
       showSplash: true,
       film:'',
       selected:false,
-      pageNumber: ''
+      pageNumber: '',
+      favorites: []
     }
   }
 
@@ -56,6 +57,17 @@ export class App extends Component {
     this.setState({ showSplash: false })
   }
 
+  addFavorite = (id) => {
+    this.state.favorites.push(id)
+  }
+
+  removeFavorite = (id) => {
+   const filteredFavorites = this.state.favorites.filter(fav => fav.id !== id);
+   this.setState({ favorites: filteredFavorites })
+  }
+
+
+
   buttonConatiner = () => {
     return (
       <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
@@ -82,17 +94,52 @@ export class App extends Component {
   }
 
   cardsContainer = () => {
-    const people = this.state.people;
-    const planets = this.state.planets;
-    const vehicles = this.state.vehicles;
+    const { people, planets, vehicles, favorites } = this.state;
+
     return (
       <section>
+<<<<<<< HEAD
         {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
         <Route exact path='/people' render={() => <Container data={people} favoriteCard ={this.favoriteCard} type={'people'} />} />
         <Route exact path='/planets' render={() => <Container data={planets} favoriteCard={this.favoriteCard} type={'planets'} />} />
         <Route exact path='/vehicles' render={() => <Container data={vehicles} favoriteCard={this.favoriteCard} type={'vehicles'} />} />
         {/* <Route exact path = '/favorites' render ={({match}) => } */}
         <Route exact path='/people/:name' render={({ match }) => {
+=======
+        <Route exact path='/People' render={() => 
+          <Container 
+            addFavorite={this.addFavorite} 
+            removeFavorite={this.removeFavorite}
+            favorites={favorites} 
+            data={people} 
+            type={'People'} />} />
+        <Route exact path='/Planets' render={() => 
+          <Container 
+            addFavorite={this.addFavorite} 
+            removeFavorite={this.removeFavorite}
+            favorites={favorites} 
+            data={planets} 
+            type={'Planets'} />} />
+        <Route exact path='/Vehicles' render={() => 
+          <Container 
+            addFavorite={this.addFavorite} 
+            removeFavorite={this.removeFavorite}
+            favorites={favorites} 
+            data={vehicles} 
+            type={'Vehicles'} />} />
+        <Route exact path='/Favorites' render={() => 
+         <Container 
+          addFavorite={this.addFavorite} 
+          removeFavorite={this.removeFavorite}
+          favorites={favorites} 
+          data={favorites} 
+          type={'Favorites'}
+        />
+      } />
+
+
+        <Route exact path='/People/:name' render={({ match }) => {
+>>>>>>> master
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
           return specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} />
@@ -110,6 +157,8 @@ export class App extends Component {
           return specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} />
         }} />
       </section>
+
+
     )
   }
 
@@ -117,10 +166,12 @@ export class App extends Component {
 
     return (
       <main className='App'>
-        {!this.state.showSplash && <Header />}
+        {!this.state.showSplash && <Header favorites={this.state.favorites.length}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
+        <main className= 'clickedMain' >
         {!this.state.showSplash && this.buttonConatiner() }
         {!this.state.showSplash && this.cardsContainer()}
+        </main>
       </main>
     )
   }

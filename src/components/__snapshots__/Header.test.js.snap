@@ -5,15 +5,14 @@ exports[`Header should render the movie title and faves button 1`] = `
   <h1>
     LightSide
   </h1>
-  <button
-    className="faveBtn"
+  <Link
+    to="/Favorites"
   >
-    View Favorites: 
-    <span
-      className="faveCounter"
+    <button
+      className="faveBtn"
     >
-       0
-    </span>
-  </button>
+      View Favorites: 
+    </button>
+  </Link>
 </header>
 `;

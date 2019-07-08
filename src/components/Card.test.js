@@ -6,7 +6,7 @@ describe('Card', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Card/>);
+        wrapper = shallow(<Card />);
     });
 
     it('should render all passed data', () => {

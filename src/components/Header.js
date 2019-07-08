@@ -1,11 +1,18 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import Container from './Container';
 import './Header.scss';
 
-const Header = () => {
+const Header = (props) => {
+    const { favorites } = props;
+
+
     return (
         <header>
             <h1>LightSide</h1>
-            <button className='faveBtn'>View Favorites: <span className='faveCounter'> 0</span></button>
+            <Link to='/Favorites'>
+                <button className='faveBtn'>View Favorites: {favorites}</button>
+            </Link>
         </header>
     )
 }

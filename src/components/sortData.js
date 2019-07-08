@@ -14,7 +14,8 @@ const sortData = (fetchData, category) => {
         homeworld: person.homeworld,
         species: person.species,
         "home world population": person.homeworld,
-        isFavorited: false
+        isFavorited: false,
+        id: person.created
       }
     })
   } else if (category === 'planets') {
@@ -25,7 +26,8 @@ const sortData = (fetchData, category) => {
         population: planet.population, 
         climate: planet.climate,
         residents: planet.residents,
-        isFavorited: false
+        isFavorited: false,
+        id: planet.created
       }
     })
   } else if (category === 'vehicles') {
@@ -35,7 +37,7 @@ const sortData = (fetchData, category) => {
         "class": vehicle.vehicle_class,
         model: vehicle.model,
         passengers: vehicle.passengers,
-        isFavorited: false
+        id: vehicle.created
       }
     })
   }

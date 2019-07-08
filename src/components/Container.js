@@ -3,38 +3,16 @@ import Card from './Card'
 import './Container.scss'
 
 
-// class Container extends React.Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             isFavorited: false,
-//         }
-//     }
-
-   
-
-//     render() {
-//         let swData = data.map(ele => {
-//             return <Card toggleFavorite={this.toggleFavorite} data={ele}/>
-//         })
-//         return (
-//             <section className='cardContainer'>
-//                 {swData}
-//             </section>
-//         )
-//     }
-// }
-
-
-const Container = ({ data, type, toggleFavorite }) => {
+const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
     console.log('Container: ', data)
     let swData = data.map(ele => {
         return <Card 
-        toggleFavorite={toggleFavorite} 
-        isFavorited
+        addFavorite={addFavorite}
+        removeFavorite={removeFavorite}
+        favorites={favorites}
         data={ele} 
         type={type}
-        id={Date.now()}
+        id={ele.id}
         />
     })
 

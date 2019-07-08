@@ -11,7 +11,7 @@ const sortData = (fetchData, category) => {
         gender: person.gender, 
         height:person.height,
         "eye color": person.eye_color,
-        isFavorited: false
+        id: person.created
       }
     })
   } else if (category === 'planets') {
@@ -20,7 +20,7 @@ const sortData = (fetchData, category) => {
         name: planet.name, 
         diameter: planet.diameter, 
         population: planet.population, climate: planet.climate,
-        isFavorited: false
+        id: planet.created
       }
     })
   } else if (category === 'vehicles') {
@@ -30,7 +30,7 @@ const sortData = (fetchData, category) => {
         "class": vehicle.vehicle_class,
         model: vehicle.model,
         passengers: vehicle.passengers,
-        isFavorited: false
+        id: vehicle.created
       }
     })
   }

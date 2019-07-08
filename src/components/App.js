@@ -18,7 +18,6 @@ export class App extends Component {
       film:'',
       selected:false,
       pageNumber: '',
-      isFavorited: false,
       favorites: []
     }
   }
@@ -52,15 +51,16 @@ export class App extends Component {
     this.setState({ showSplash: false })
   }
 
-  toggleFavorite = (id) => {
-      let { favorites } = this.state;
-      let { isFavorited } = this.state;
-      this.setState = {
-        favorites: favorites.push(id),
-        isFavorited: !isFavorited
-      };
-    };
-    // this.setState({ isFavorited: !this.state.isFavorited})
+  addFavorite = (id) => {
+    this.state.favorites.push(id)
+  }
+
+  removeFavorite = (id) => {
+   const filteredFavorites = this.state.favorites.filter(fav => fav !== id);
+   this.setState({ favorites: filteredFavorites })
+  }
+
+
 
   buttonConatiner = () => {
     return (
@@ -94,9 +94,28 @@ export class App extends Component {
     return (
       <section>
         {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
-        <Route exact path='/People' render={() => <Container toggleFavorite={this.toggleFavorite} data={people} type={'People'} />} />
-        <Route exact path='/Planets' render={() => <Container toggleFavorite={this.toggleFavorite} data={planets} type={'Planets'} />} />
-        <Route exact path='/Vehicles' render={() => <Container toggleFavorite={this.toggleFavorite} data={vehicles} type={'Vehicles'} />} />
+        <Route exact path='/People' render={() => 
+          <Container 
+            addFavorite={this.addFavorite} 
+            removeFavorite={this.removeFavorite}
+            favorites={this.state.favorites} 
+            data={people} 
+            type={'People'} />} />
+        <Route exact path='/Planets' render={() => 
+          <Container 
+            addFavorite={this.addFavorite} 
+            removeFavorite={this.removeFavorite}
+            favorites={this.state.favorites} 
+            data={planets} 
+            type={'Planets'} />} />
+        <Route exact path='/Vehicles' render={() => 
+          <Container 
+            addFavorite={this.addFavorite} 
+            removeFavorite={this.removeFavorite}
+            favorites={this.state.favorites} 
+            data={vehicles} 
+            type={'Vehicles'} />} />
+
 
         <Route exact path='/People/:name' render={({ match }) => {
           const { name } = match.params
@@ -117,25 +136,6 @@ export class App extends Component {
         }} />
       </section>
 
-//       <article>
-//         <nav className='btnContainer'>
-//           <Link to='/People'>
-//             <button className='selectCategoryBtn'>People<img className='icon' src={human} alt='' /></button>
-//           </Link>
-//           <Link to='/Planets'>
-//             <button className='selectCategoryBtn'>Planets<img className='icon' src={planet} alt='' /></button>
-//           </Link>
-//           <Link to='/Vehicles'>
-//             <button className='selectCategoryBtn'>Vehicles<img className='icon' src={vehicle} alt='' /></button>
-//           </Link>
-//           </nav>
-//           <section>
-//           <Route path='/People' render={() => <Container data={this.state.people} />} />
-//           <Route path='/Planets' render={() => <Container data={this.state.planets} />} />
-//           <Route path='/Vehicles' render={() => <Container data={this.state.vehicles} />} />
-//         </section>
-//       </article>
-
 
     )
   }
@@ -144,7 +144,7 @@ export class App extends Component {
 
     return (
       <main className='App'>
-        {!this.state.showSplash && <Header favorites={this.favorites}/>}
+        {!this.state.showSplash && <Header favorites={this.state.favorites.length}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         <main className= 'clickedMain' >
         {!this.state.showSplash && this.buttonConatiner() }

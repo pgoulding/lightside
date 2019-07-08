@@ -92,7 +92,6 @@ export class App extends Component {
 
     return (
       <section>
-        {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
         <Route exact path='/People' render={() => 
           <Container 
             addFavorite={this.addFavorite} 

@@ -56,7 +56,7 @@ export class App extends Component {
   }
 
   removeFavorite = (id) => {
-   const filteredFavorites = this.state.favorites.filter(fav => fav !== id);
+   const filteredFavorites = this.state.favorites.filter(fav => fav.id !== id);
    this.setState({ favorites: filteredFavorites })
   }
 
@@ -88,9 +88,8 @@ export class App extends Component {
   }
 
   cardsContainer = () => {
-    const people = this.state.people;
-    const planets = this.state.planets;
-    const vehicles = this.state.vehicles;
+    const { people, planets, vehicles, favorites } = this.state;
+
     return (
       <section>
         {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
@@ -98,23 +97,32 @@ export class App extends Component {
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
-            favorites={this.state.favorites} 
+            favorites={favorites} 
             data={people} 
             type={'People'} />} />
         <Route exact path='/Planets' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
-            favorites={this.state.favorites} 
+            favorites={favorites} 
             data={planets} 
             type={'Planets'} />} />
         <Route exact path='/Vehicles' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
-            favorites={this.state.favorites} 
+            favorites={favorites} 
             data={vehicles} 
             type={'Vehicles'} />} />
+        <Route exact path='/Favorites' render={() => 
+         <Container 
+          addFavorite={this.addFavorite} 
+          removeFavorite={this.removeFavorite}
+          favorites={favorites} 
+          data={favorites} 
+          type={'Favorites'}
+        />
+      } />
 
 
         <Route exact path='/People/:name' render={({ match }) => {

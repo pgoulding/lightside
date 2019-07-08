@@ -15,21 +15,21 @@ class Card extends React.Component {
     }
     
     toggleFavorite = () => {
-        const { addFavorite, removeFavorite, id } = this.props;
+        const { addFavorite, removeFavorite, id, data, favorites } = this.props;
         const { isFavorited } = this.state;
 
         this.setState({ isFavorited: !isFavorited })
-        if(!isFavorited) {
-            addFavorite(id)
+        if(!isFavorited && !favorites.includes(data)) {
+            addFavorite(data)
         } else {
             removeFavorite(id)
         }
     }
 
     componentDidMount()  {
-        const { favorites, id } = this.props;
+        const { favorites, data } = this.props;
 
-        if(favorites.includes(id)) {
+        if(favorites.includes(data)) {
             this.setState({ isFavorited: true })
         }
     }

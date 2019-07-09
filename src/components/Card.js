@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './Card.scss'
 import favInactive from '../images/001-lightsaber.svg';
@@ -68,6 +69,15 @@ class Card extends React.Component {
             </article>
         )
     }
+}
+
+Card.propTypes = {
+    toggleFavorite : PropTypes.func.isRequired,
+    data: PropTypes.string,
+    addFavorite: PropTypes.func.isRequired,
+    type: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    favorites: PropTypes.array.isRequirede
 }
 
 

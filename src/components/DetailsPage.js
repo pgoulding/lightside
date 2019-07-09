@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import './Card.scss'
 
 const DetailsPage = ({data, type}) => {
@@ -19,6 +21,11 @@ const DetailsPage = ({data, type}) => {
       {detailsCleaner()}
     </div>
   )
+}
+
+DetailsPage.propTypes = {
+  data: PropTypes.string,
+  type: PropTypes.string
 }
 
 export default DetailsPage

@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from './Card'
+import PropTypes from 'prop-types';
+
 import './Container.scss'
 
 
@@ -21,6 +23,13 @@ const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
             { swData }
         </section>
     )
+}
+
+Container.propTypes = {
+    data: PropTypes.string,
+    type: PropTypes.string,
+    favorites: PropTypes.array.isRequired,
+    
 }
 
 export default Container;

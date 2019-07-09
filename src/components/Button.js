@@ -5,18 +5,16 @@ import PropTypes from 'prop-types';
 import './Button.scss';
 
 
-const Button = ({ link, title, img }) => {
+const Button = (props) => {
+    const {link, title, img, animateButtons} = props;
 
     return (
-        <>
           <Link to={link}>
-            <button className='selectCategoryBtn'>
+            <button className='selectCategoryBtn' onClick={() => animateButtons()}>
               <span className='selectCategoryBtnText'>{title}</span>
               <img className='icon' src={img} alt='' />
             </button>
           </Link>
-
-        </>
       )
 }
 

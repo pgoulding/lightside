@@ -9,27 +9,28 @@ import planet from '../images/007-universe.svg';
 import vehicle from '../images/002-star-wars.svg';
 
 
-const ButtonContainer = ({ selected }) => {
+const ButtonContainer = ({ selected, animateButtons }) => {
     let btnData = [
-        { People: {
-            link: '/people',
+        {   link: '/people',
             title: 'People',
-            img: {human},
-        }},
-        { Planets: {
-            link: '/planets',
+            img: human,
+            animateButtons: {animateButtons}
+        },
+        {   link: '/planets',
             title: 'Planets',
-            img: {planet}
-        }},
-        { Vehicles: {
-            link: '/vehicles',
+            img: planet,
+            animateButtons: {animateButtons}
+        },
+        {   link: '/vehicles',
             title: 'Vehicles',
-            img: {vehicle}
-        }}
+            img: vehicle,
+            animateButtons: {animateButtons}
+        }
     ];
 
     const buttons = btnData.map(type => {
         return <Button 
+                animateButtons={animateButtons}
                 link={type.link}
                 title={type.title}
                 img={type.img}

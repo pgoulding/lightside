@@ -7,13 +7,13 @@ const sortData = (fetchData, category) => {
     return fetchData.map(person => {
       return {
         name: person.name, 
-        "birth year": person.birth_year, 
+        birth_year: person.birth_year, 
         gender: person.gender, 
         height:person.height,
-        "eye color": person.eye_color,
+        eye_color: person.eye_color,
         homeworld: person.homeworld,
         species: person.species,
-        "home world population": person.homeworld,
+        home_world_population: person.homeworld,
         isFavorited: false,
         id: person.created
       }
@@ -22,6 +22,7 @@ const sortData = (fetchData, category) => {
     return fetchData.map(planet => {
       return {
         name: planet.name, 
+        terrain: planet.terrain,
         diameter: planet.diameter, 
         population: planet.population, 
         climate: planet.climate,
@@ -34,7 +35,7 @@ const sortData = (fetchData, category) => {
     return fetchData.map(vehicle => {
       return {
         name: vehicle.name,
-        "class": vehicle.vehicle_class,
+        vehicle_class: vehicle.vehicle_class,
         model: vehicle.model,
         passengers: vehicle.passengers,
         id: vehicle.created

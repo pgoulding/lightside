@@ -13,10 +13,18 @@ exports[`Card should render all passed data 1`] = `
   <h2>
     Beyonce
   </h2>
-  <h3 />
-  <h3 />
-  <h3 />
-  <h3 />
+  <h3>
+    Birth Year: 1990
+  </h3>
+  <h3>
+    Gender: fierce
+  </h3>
+  <h3>
+    Height: tall
+  </h3>
+  <h3>
+    Eye Color: golden
+  </h3>
   <Link
     className="detailsLink"
     key="Beyonce"

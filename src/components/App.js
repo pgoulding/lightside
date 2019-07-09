@@ -14,7 +14,7 @@ export class App extends Component {
     this.state = {
       showSplash: true,
       film:'',
-      selected:false,
+      selected: false,
       pageNumber: '',
       favorites: []
     }
@@ -60,8 +60,7 @@ export class App extends Component {
   }
 
   addFavorite = (newFave) => {
-    this.state.favorites.push(newFave)
-    this.setState({ favorites: [...this.state.favorites]})
+    this.setState({ favorites: [...this.state.favorites, newFave]})
   }
 
   removeFavorite = (id) => {
@@ -69,15 +68,25 @@ export class App extends Component {
    this.setState({ favorites: filteredFavorites })
   }
 
-  noFavesMessage = () => {
-    return (
-      <div className='noFavesMessage'>
-        <h2>To display, no favorites you have.</h2>
-      </div>
-    )
+  favoritesPage = () => {
+    if(this.state.favorites.length) {
+      return  <Container 
+      addFavorite={this.addFavorite} 
+      removeFavorite={this.removeFavorite}
+      favorites={this.state.favorites} 
+      data={this.state.favorites} 
+      type={'favorites'}
+    />
+    } else {
+      return (
+        <div className='noFavesMessage'>
+          <h2>To display, no favorites you have.</h2>
+        </div>
+      )
+    }
   }
 
-    buttonContainer = () => {
+  buttonContainer = () => {
       return <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected}/>
     }
 
@@ -110,15 +119,7 @@ export class App extends Component {
             data={vehicles} 
             type={'vehicles'} />} />
 
-        <Route exact path='/favorites' render={() => 
-          <Container 
-           addFavorite={this.addFavorite} 
-           removeFavorite={this.removeFavorite}
-           favorites={favorites} 
-           data={favorites} 
-           type={'favorites'}
-         />
-      } />
+        <Route exact path='/favorites' render={() => this.favoritesPage()} />
 
 
         <Route exact path='/people/:name' render={({ match }) => {

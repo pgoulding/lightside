@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
@@ -14,17 +13,20 @@ const ButtonContainer = ({ selected, animateButtons }) => {
         {   link: '/people',
             title: 'People',
             img: human,
-            animateButtons: {animateButtons}
+            animateButtons: {animateButtons},
+            key: 1
         },
         {   link: '/planets',
             title: 'Planets',
             img: planet,
-            animateButtons: {animateButtons}
+            animateButtons: {animateButtons},
+            key: 2
         },
         {   link: '/vehicles',
             title: 'Vehicles',
             img: vehicle,
-            animateButtons: {animateButtons}
+            animateButtons: {animateButtons},
+            key: 3
         }
     ];
 
@@ -34,6 +36,7 @@ const ButtonContainer = ({ selected, animateButtons }) => {
                 link={type.link}
                 title={type.title}
                 img={type.img}
+                key={type.key}
                 />
     })
     return (
@@ -42,6 +45,10 @@ const ButtonContainer = ({ selected, animateButtons }) => {
         </nav>
     )
 
+}
+
+ButtonContainer.propTypes = {
+    animateButtons: PropTypes.func.isRequired
 }
 
 export default ButtonContainer;

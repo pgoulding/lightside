@@ -26,7 +26,7 @@ export class App extends Component {
     const starWarsMovies = `https://swapi.co/api/films/`
     fetch(starWarsMovies)
     .then(response => response.json())
-    .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (6 - 1 + 1)) + 1) }))
+    .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (6 - 2 + 1)) + 1) }))
     .catch(err => console.error(err))
     this.updatePage()
   }
@@ -43,8 +43,14 @@ export class App extends Component {
     })
   }
 
+  favoriteCard = (name, category) => {
+    let card = this.state[category].find(obj => obj.name === name)
+    card.isFavorited = !card.isFavorited
+    this.setState({[category]: [...this.state[category]]})
+  }
+
   changeButtons = () => {
-    this.setState({selected:true})
+    this.setState({ selected:true })
   }
 
   toggleSplash = () => {
@@ -65,19 +71,19 @@ export class App extends Component {
   buttonConatiner = () => {
     return (
       <nav className={this.state.selected ? 'clickedContainer' : 'btnContainer'}>
-        <Link to='/People'>
+        <Link to='/people'>
           <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
             <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>People</span>
             <img className='icon' src={human} alt='' />
           </button>
         </Link>
-        <Link to='/Planets' >
+        <Link to='/planets' >
           <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
             <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>Planets</span>
             <img className='icon' src={planet} alt='' />
           </button>
         </Link>
-        <Link to='/Vehicles'>
+        <Link to='/vehicles'>
           <button className='selectCategoryBtn' onClick={() => this.changeButtons()}>
             <span className={this.state.selected ? 'active' : 'selectCategoryBtnText'}>Vehicles</span>
             <img className='icon' src={vehicle} alt='' />
@@ -92,55 +98,54 @@ export class App extends Component {
 
     return (
       <section>
-        {/* <Route path='/' component={<MovieIntro toggleSplash={this.toggleSplash} films={this.state.film} />} /> */}
-        <Route exact path='/People' render={() => 
+        <Route exact path='/people' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={people} 
-            type={'People'} />} />
-        <Route exact path='/Planets' render={() => 
+            type={'people'} />} />
+        <Route exact path='/planets' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={planets} 
-            type={'Planets'} />} />
-        <Route exact path='/Vehicles' render={() => 
+            type={'planets'} />} />
+        <Route exact path='/vehicles' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={vehicles} 
-            type={'Vehicles'} />} />
-        <Route exact path='/Favorites' render={() => 
+            type={'vehicles'} />} />
+        <Route exact path='/favorites' render={() => 
          <Container 
           addFavorite={this.addFavorite} 
           removeFavorite={this.removeFavorite}
           favorites={favorites} 
           data={favorites} 
-          type={'Favorites'}
+          type={'favorites'}
         />
       } />
 
 
-        <Route exact path='/People/:name' render={({ match }) => {
+        <Route exact path='/people/:name' render={({ match }) => {
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
-          return specificPerson && <DetailsPage data={specificPerson} type={'People'} key={name} />
+          return specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} />
         }} />
 
-        <Route exact path='/Planets/:name' render={({ match }) => {
+        <Route exact path='/planets/:name' render={({ match }) => {
           const { name } = match.params
           let specificPlanet = planets.find(planet => name === planet.name)
-          return specificPlanet && <DetailsPage data={specificPlanet} type={'Planets'} key={name} />
+          return specificPlanet && <DetailsPage data={specificPlanet} type={'planets'} key={name} />
         }} />
 
-        <Route exact path='/Vehicles/:name' render={({ match }) => {
+        <Route exact path='/vehicles/:name' render={({ match }) => {
           const { name } = match.params
           let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
-          return specificVehicle && <DetailsPage data={specificVehicle} type={'Vehicles'} key={name} />
+          return specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} />
         }} />
       </section>
 

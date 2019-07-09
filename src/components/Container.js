@@ -4,7 +4,6 @@ import './Container.scss'
 
 
 const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
-    console.log('Container: ', data)
     let swData = data.map(ele => {
         return <Card 
         addFavorite={addFavorite}
@@ -13,6 +12,7 @@ const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
         data={ele} 
         type={type}
         id={ele.id}
+        key={ele.id}
         />
     })
 

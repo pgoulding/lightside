@@ -11,5 +11,5 @@ describe('Card', () => {
 
     it('should render all passed data', () => {
         expect(wrapper).toMatchSnapshot();
-    })
+    });
 })

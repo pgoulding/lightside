@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import './Header.scss';
 
 const Header = (props) => {
@@ -16,6 +18,10 @@ const Header = (props) => {
             </Link>
         </header>
     )
+}
+
+Header.propTypes = {
+    favorites: PropTypes.array.isRequired
 }
 
 export default Header;

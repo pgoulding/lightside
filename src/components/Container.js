@@ -18,6 +18,8 @@ const Container = ({ data, type, favorites, addFavorite, removeFavorite}) => {
         />
     })
 
+    
+
     return (
         <section className='cardContainer'>
             { swData }

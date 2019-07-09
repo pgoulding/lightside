@@ -77,7 +77,7 @@ Card.propTypes = {
     addFavorite: PropTypes.func.isRequired,
     type: PropTypes.string,
     id: PropTypes.number.isRequired,
-    favorites: PropTypes.array.isRequirede
+    favorites: PropTypes.array.isRequired
 }
 
 

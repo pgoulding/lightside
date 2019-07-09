@@ -131,23 +131,14 @@ export class App extends Component {
             data={vehicles} 
             type={'vehicles'} />} />
 
-        <Route exact path='/favorites' render={() => {
-          const noFavesMessage = (
-            <div className='noFavesMessage'>
-              <h2>To display, no favorites you have</h2>
-            </div>
-          )
-          this.state.favorites ?
+        <Route exact path='/favorites' render={() => 
           <Container 
            addFavorite={this.addFavorite} 
            removeFavorite={this.removeFavorite}
            favorites={favorites} 
            data={favorites} 
            type={'favorites'}
-         /> :
-         noFavesMessage;
-
-        }
+         />
       } />
 
 

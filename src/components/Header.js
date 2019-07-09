@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import Container from './Container';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = (props) => {

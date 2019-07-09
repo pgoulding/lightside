@@ -9,7 +9,9 @@ const Header = (props) => {
 
     return (
         <header>
-            <h1>LightSide</h1>
+            <Link to='/'>
+                <h1>LightSide</h1>
+            </Link>
             <Link to='/Favorites'>
                 <button className='faveBtn'>View Favorites: {favorites}</button>
             </Link>

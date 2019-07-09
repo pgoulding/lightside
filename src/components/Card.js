@@ -64,7 +64,7 @@ class Card extends React.Component {
                     || (data.climate && `Climate: ${data.climate}` )
                     || ''}</h3>
     
-                <Link key={data.name} to={`/${type}/${data.name}`}>More Details</Link>
+                <Link className='detailsLink' key={data.name} to={`/${type}/${data.name}`}>More Details</Link>
             </article>
         )
     }

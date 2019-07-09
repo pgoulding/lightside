@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import Container from './Container';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = (props) => {
@@ -9,7 +8,9 @@ const Header = (props) => {
 
     return (
         <header>
-            <h1>LightSide</h1>
+            <Link to='/'>
+                <h1>LightSide</h1>
+            </Link>
             <Link to='/Favorites'>
                 <button className='faveBtn'>View Favorites: {favorites}</button>
             </Link>

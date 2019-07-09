@@ -57,13 +57,22 @@ export class App extends Component {
     this.setState({ showSplash: false })
   }
 
-  addFavorite = (id) => {
-    this.state.favorites.push(id)
+  addFavorite = (newFave) => {
+    this.state.favorites.push(newFave)
+    this.setState({ favorites: [...this.state.favorites]})
   }
 
   removeFavorite = (id) => {
    const filteredFavorites = this.state.favorites.filter(fav => fav.id !== id);
    this.setState({ favorites: filteredFavorites })
+  }
+
+  noFavesMessage = () => {
+    return (
+      <div className='noFavesMessage'>
+        <h2>To display, no favorites you have.</h2>
+      </div>
+    )
   }
 
 
@@ -105,6 +114,7 @@ export class App extends Component {
             favorites={favorites} 
             data={people} 
             type={'people'} />} />
+
         <Route exact path='/planets' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
@@ -112,6 +122,7 @@ export class App extends Component {
             favorites={favorites} 
             data={planets} 
             type={'planets'} />} />
+
         <Route exact path='/vehicles' render={() => 
           <Container 
             addFavorite={this.addFavorite} 
@@ -119,14 +130,15 @@ export class App extends Component {
             favorites={favorites} 
             data={vehicles} 
             type={'vehicles'} />} />
+
         <Route exact path='/favorites' render={() => 
-         <Container 
-          addFavorite={this.addFavorite} 
-          removeFavorite={this.removeFavorite}
-          favorites={favorites} 
-          data={favorites} 
-          type={'favorites'}
-        />
+          <Container 
+           addFavorite={this.addFavorite} 
+           removeFavorite={this.removeFavorite}
+           favorites={favorites} 
+           data={favorites} 
+           type={'favorites'}
+         />
       } />
 
 
@@ -160,7 +172,7 @@ export class App extends Component {
         {!this.state.showSplash && <Header favorites={this.state.favorites.length}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         <main className= 'clickedMain' >
-        {!this.state.showSplash && this.buttonConatiner() }
+        {!this.state.showSplash && this.buttonConatiner()}
         {!this.state.showSplash && this.cardsContainer()}
         </main>
       </main>

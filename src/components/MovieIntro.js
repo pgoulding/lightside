@@ -3,12 +3,14 @@ import Crawl from 'react-star-wars-crawl'
 import './MovieIntro.css'
 import 'react-star-wars-crawl/lib/index.css'
 
-const MovieIntro = ({ films, toggleSplash }) => {
-  const {episode_id, title, opening_crawl} = films
+const MovieIntro = ({ movie, toggleSplash }) => {
+  const {episode_id, title, opening_crawl} = movie
+
   const swapEpisodeNum = () => {
     let epsiodeNumerals = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']
     return epsiodeNumerals[episode_id]
   }
+
   return (
     <article>
       <Crawl

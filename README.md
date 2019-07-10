@@ -17,7 +17,7 @@ Home Screen:
 ![](https://user-images.githubusercontent.com/47507801/60972919-67d89080-a2e4-11e9-803e-35b9f258b99e.gif)
 
 Categories:
-![]https://github.com/pgoulding/lightside/blob/master/src/images/lightside-buttoninteraction.gif)
+![](https://github.com/pgoulding/lightside/blob/master/src/images/lightside-buttoninteraction.gif)
 
 Favorites:
 ![](https://github.com/pgoulding/lightside/blob/master/src/images/lightside-favorites.gif)

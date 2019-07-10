@@ -68,18 +68,16 @@ export class App extends Component {
    this.setState({ favorites: filteredFavorites })
   }
 
-  favoritesPage = (path) => {
+  favoritesPage = () => {
     if(this.state.favorites.length) {
-      return  (
-      this.state.selected ? <Container 
+      return  <Container 
       addFavorite={this.addFavorite} 
       removeFavorite={this.removeFavorite}
       favorites={this.state.favorites} 
       data={this.state.favorites} 
       type={'favorites'}
-    /> :
-    <Redirect to='/' />)
-    } else if(path === '/favorites') {
+    /> 
+    } else {
       return (
         <div className='noFavesMessage'>
           <h2>To display, no favorites you have.</h2>
@@ -129,7 +127,11 @@ export class App extends Component {
               <Redirect to='/' />
               )}/>
 
-        <Route exact path='/favorites' render={() => this.favoritesPage('/favorites')} />
+        <Route exact path='/favorites' render={() => (
+          this.state.selected ? 
+          this.favoritesPage('/favorites') :
+          <Redirect to='/'/>
+          )} />
 
 
         <Route exact path='/people/:name' render={({ match }) => {
@@ -160,7 +162,12 @@ export class App extends Component {
 
     return (
       <main className='App'>
-        {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} favorites={this.state.favorites.length}/>}
+        {!this.state.showSplash && 
+          <Header  
+            restoreHomePage={this.restoreHomePage} 
+            animateButtons={this.animateButtons} 
+            favorites={this.state.favorites.length}
+            />}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         <main className= 'clickedMain' >
         {!this.state.showSplash && <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected} />}

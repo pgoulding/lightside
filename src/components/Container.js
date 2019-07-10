@@ -18,9 +18,15 @@ const Container = ({ data, type, favorites, addFavorite, removeFavorite }) => {
         />
     })
 
+    let error = (
+        <div className='noFavesMessage'>
+          <h2>To display, no favorites you have.</h2>
+        </div>
+      )
+
     return (
         <section className='cardContainer'>
-            { swData }
+            {favorites.length ? swData : error}
         </section>
     )
 }

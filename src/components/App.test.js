@@ -18,6 +18,48 @@ describe('App', () => {
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot()
-  })
+  });
+
+  it('should call fetch with correct url', () => {
+
+  });
+
+  it('should return a response if status is ok', () => {
+
+  });
+
+  it('should throw an error if status is not ok', () => {
+
+  });
+
+  it('should fetch categories when updatePage is called', () => {
+
+  });
+
+  it('should update favorites array if favoriteCard is called', () => {
+
+  });
+
+  it('should update selected state if animateButtons is called', () => {
+
+  });
+
+  it('should update selected state if restoreHomePage is called', () => {
+
+  });
+
+  it('should update showSplash state when toggleSplash is called', () => {
+
+  });
+
+  it('should update favorites when addFavorite is called', () => {
+
+  });
+
+  it('should update favorites when removeFavorites is called', () => {
+
+  });
+
+  it('should ')
 
 })

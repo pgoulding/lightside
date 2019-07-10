@@ -1,0 +1,28 @@
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    width: 100%;
+  
+  }
+  
+  .clickedContainer {
+    flex-direction: column;
+    transition: 2s;
+    width: 30%;
+    float: left;
+    button {
+        height: 200px;
+        width: 200px;
+    }
+  }
+  
+  .clickedMain {
+    display: flex;
+  }
+  
+//   .active {
+//     color: #feda4a;
+//     height: 50px;
+//     width: 50px;
+//   }

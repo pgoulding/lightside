@@ -9,7 +9,7 @@ import planet from '../images/007-universe.svg';
 import vehicle from '../images/002-star-wars.svg';
 import DetailsPage from './DetailsPage'
 import sortData from './sortData'
-import {currentMovie, fetchPageData} from './swapi'
+import {currentMovie, fetchPageData, fetchPeopleDetails} from './swapi'
 
 export class App extends Component {
   constructor () {
@@ -51,9 +51,9 @@ export class App extends Component {
     this.setState({[category]: [...this.state[category]]})
   }
 
-  // changeButtons = () => {
-  //   this.setState({ selected:true })
-  // }
+  changeButtons = () => {
+    this.setState({ selected:true })
+  }
 
   toggleSplash = () => {
     this.setState({ showSplash: false })
@@ -132,7 +132,7 @@ export class App extends Component {
         <Route exact path='/people/:name' render={({ match }) => {
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
-          return specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} />
+          return specificPerson && <DetailsPage data={specificPerson} fetchPeopleDetails={fetchPeopleDetails} type={'people'} key={name} />
         }} />
 
         <Route exact path='/planets/:name' render={({ match }) => {

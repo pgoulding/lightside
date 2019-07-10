@@ -91,7 +91,7 @@ export class App extends Component {
 
 
     return (
-      <section className='content-conatiner'>
+      <section className={this.state.selected && 'content-conatiner'}>
        <Route exact path='/people' render={() => (
          this.state.selected ?
           <Container 

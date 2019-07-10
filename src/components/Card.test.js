@@ -10,8 +10,6 @@ describe('Card', () => {
     let mockData;
     let mockFavorites;
 
-
-
     beforeEach(() => {
         mockToggleFavorite = jest.fn();
         mockAddFavorite = jest.fn();
@@ -22,10 +20,16 @@ describe('Card', () => {
         ]
         mockData = {
             name: 'Beyonce',
+            birth_year: 1990,
+            gender: 'fierce',
+            height: 'tall',
+            eye_color: 'golden'
         }
         wrapper = shallow(
             <Card 
                 data={mockData}
+                id='1'
+                key='100'
                 toggleFavorite={mockToggleFavorite}
                 addFavorite={mockAddFavorite}
                 removeFavorite={mockRemoveFavorite}

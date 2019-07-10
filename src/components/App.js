@@ -3,7 +3,7 @@ import MovieIntro from './MovieIntro'
 import Header from './Header'
 import Container from './Container'
 import ButtonContainer from './ButtonContainer';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import './App.css';
 import DetailsPage from './DetailsPage'
 import sortData from './sortData'
@@ -43,12 +43,6 @@ export class App extends Component {
     })
   }
 
-  favoriteCard = (name, category) => {
-    let card = this.state[category].find(obj => obj.name === name)
-    card.isFavorited = !card.isFavorited
-    this.setState({[category]: [...this.state[category]]})
-  }
-
   animateButtons = () => {
     this.setState({ selected:true })
   }
@@ -62,8 +56,7 @@ export class App extends Component {
   }
 
   addFavorite = (newFave) => {
-    this.state.favorites.push(newFave)
-    this.setState({ favorites: [...this.state.favorites]})
+    this.setState({ favorites: [...this.state.favorites, newFave]})
   }
 
   removeFavorite = (id) => {
@@ -71,92 +64,113 @@ export class App extends Component {
    this.setState({ favorites: filteredFavorites })
   }
 
-  noFavesMessage = () => {
-    return (
-      <div className='noFavesMessage'>
-        <h2>To display, no favorites you have.</h2>
-      </div>
-    )
+  favoritesPage = () => {
+    if(this.state.favorites.length) {
+      return  <Container 
+      addFavorite={this.addFavorite} 
+      removeFavorite={this.removeFavorite}
+      favorites={this.state.favorites} 
+      data={this.state.favorites} 
+      type={'favorites'}
+    /> 
+    } else {
+      return (
+        <div className='noFavesMessage'>
+          <h2>To display, no favorites you have.</h2>
+        </div>
+      )
+    }
   }
 
-    buttonContainer = () => {
-      return <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected}/>
-    }
+  
+
 
   cardsContainer = () => {
     const { people, planets, vehicles, favorites } = this.state;
 
+
     return (
       <section>
-        <Route exact path='/people' render={() => 
+       <Route exact path='/people' render={() => (
+         this.state.selected ?
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={people} 
-            type={'people'} />} />
-
-        <Route exact path='/planets' render={() => 
+            type={'people'} /> : 
+          <Redirect to='/' />
+       )} />
+        <Route exact path='/planets' render={() => (
+          this.state.selected ?
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={planets} 
-            type={'planets'} />} />
+            type={'planets'} /> :
+            <Redirect to='/' />            
+            )} />
 
-        <Route exact path='/vehicles' render={() => 
+        <Route exact path='/vehicles' render={() => (
+          this.state.selected ?
           <Container 
-            addFavorite={this.addFavorite} 
-            removeFavorite={this.removeFavorite}
-            favorites={favorites} 
-            data={vehicles} 
-            type={'vehicles'} />} />
+              addFavorite={this.addFavorite} 
+              removeFavorite={this.removeFavorite}
+              favorites={favorites} 
+              data={vehicles} 
+              type={'vehicles'} /> :
+              <Redirect to='/' />
+              )}/>
 
-        <Route exact path='/favorites' render={() => 
-          <Container 
-           addFavorite={this.addFavorite} 
-           removeFavorite={this.removeFavorite}
-           favorites={favorites} 
-           data={favorites} 
-           type={'favorites'}
-         />
-      } />
+        <Route exact path='/favorites' render={() => (
+          this.state.selected ? 
+          this.favoritesPage('/favorites') :
+          <Redirect to='/'/>
+          )} />
 
         <Route exact path='/people/:name' render={({ match }) => {
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
-          return specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} />
+          return (
+            this.state.selected ? specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
 
         <Route exact path='/planets/:name' render={({ match }) => {
           const { name } = match.params
           let specificPlanet = planets.find(planet => name === planet.name)
-          return specificPlanet && <DetailsPage data={specificPlanet} type={'planets'} key={name} />
+          return (
+            this.state.selected ? specificPlanet && <DetailsPage data={specificPlanet} type={'planets'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
 
         <Route exact path='/vehicles/:name' render={({ match }) => {
           const { name } = match.params
           let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
-          return specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} />
+          return (
+            this.state.selected ? specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
 
         <Route exact path='/favorites/:name' render={({ match }) => {
           const { name } = match.params
           let specificFav = favorites.find(fav => name === fav.name)
-          return specificFav && <DetailsPage data={specificFav} type={'favorites'} key={name} />
+          return (
+            this.state.selected ? specificFav && <DetailsPage data={specificFav} type={'favorites'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
       </section>
     )
   }
 
   render() {
-
     return (
       <main className='App'>
-        {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} favorites={this.state.favorites.length}/>}
+        {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} animateButtons={this.animateButtons} favorites={this.state.favorites.length}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} movie={ this.state.film }/>}
         <main className= 'clickedMain' >
-        {!this.state.showSplash && this.buttonContainer()}
+        {!this.state.showSplash && <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected} />}
         {!this.state.showSplash && this.cardsContainer()}
         </main>
       </main>

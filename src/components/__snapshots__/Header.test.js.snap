@@ -5,7 +5,9 @@ exports[`Header should render the movie title and faves button 1`] = `
   <Link
     to="/"
   >
-    <h1>
+    <h1
+      onClick={[Function]}
+    >
       LightSide
     </h1>
   </Link>
@@ -14,6 +16,7 @@ exports[`Header should render the movie title and faves button 1`] = `
   >
     <button
       className="faveBtn"
+      onClick={[Function]}
     >
       View Favorites: 
     </button>

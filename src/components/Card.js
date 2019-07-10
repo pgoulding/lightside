@@ -37,7 +37,7 @@ class Card extends React.Component {
 
     render() {
         const { data, type } = this.props;
-
+        
         return (
             <article className='card'>
                 <img
@@ -72,11 +72,11 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-    toggleFavorite : PropTypes.func.isRequired,
-    data: PropTypes.string,
+    toggleFavorite : PropTypes.func,
+    data: PropTypes.object,
     addFavorite: PropTypes.func.isRequired,
     type: PropTypes.string,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string,
     favorites: PropTypes.array.isRequired
 }
 

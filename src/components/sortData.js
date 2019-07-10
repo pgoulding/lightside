@@ -2,7 +2,6 @@ import React from 'react'
 
 const sortData = (fetchData, category) => {
   if(category === 'people') {
-    console.log('people category')
     return fetchData.map(person => {
       return {
         name: person.name, 
@@ -19,6 +18,7 @@ const sortData = (fetchData, category) => {
     return fetchData.map(planet => {
       return {
         name: planet.name, 
+        terrain: planet.terrain,
         diameter: planet.diameter, 
         population: planet.population, 
         climate: planet.climate,

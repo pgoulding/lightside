@@ -18,4 +18,11 @@ const Button = (props) => {
       )
 }
 
+Button.propTypes = {
+    link: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    animateButtons: PropTypes.func
+}
+
 export default Button;

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonContainer should render button data 1`] = `
+<nav
+  className="btnContainer"
+>
+  <Button
+    img="006-human.svg"
+    key="1"
+    link="/people"
+    title="People"
+  />
+  <Button
+    img="007-universe.svg"
+    key="2"
+    link="/planets"
+    title="Planets"
+  />
+  <Button
+    img="002-star-wars.svg"
+    key="3"
+    link="/vehicles"
+    title="Vehicles"
+  />
+</nav>
+`;

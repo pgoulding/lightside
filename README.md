@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Light Side
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This app demonstrates basic React principles that allows a user to characters, planets, and vehicles from the Star Wars series. The page opens with the classic scrolling text that begins each movie, with a button for the user to enter the site. Upon entering, the user may select a category with items to view, select, remove and view favorites, and read more details on each item.
 
-In the project directory, you can run:
+### Set Up
 
-### `npm start`
+To access this page, start by cloning down this repository by pasting this in your command line :
+> git clone https://github.com/pgoulding/lightside.git
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+CD into the directory and run `npm install`.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`npm start` will start up the React server and you'll see the site in action.
 
-### `npm test`
+### Screengrabs:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Home Screen:
+![](https://user-images.githubusercontent.com/47507801/60972919-67d89080-a2e4-11e9-803e-35b9f258b99e.gif)
 
-### `npm run build`
+Categories:
+![](images/lightside-buttoninteraction.gif)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Favorites:
+![](images/lightside-favorites.gif)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Tech Emphasis
+This project implemented skills with:
+- React
+- React Router
+- JSX
+- SCSS
+- Jest and Enzyme
+- Fetch APIs
+- Asynchronous JS and testing
+- Wireframing
+- Trello organization
+- Git Workflow
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Future Iterations
+- Add a `More` button to load more cards.
+- Implement `localStorage` for persisting Data.
+- Create a `Select Movie` button so the user can specify which cards they'd like to see.
 
-### `npm run eject`
+Enjoy!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Collaborators:
+Taylor Noel Jordan [(additional projects on GH)](https://github.com/TaylorNoelJordan?tab=repositories)
+Patrick Goulding [(additional projects on GH)](https://github.com/pgoulding?tab=repositories)

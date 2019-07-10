@@ -1,3 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card should render all passed data 1`] = `undefined`;
+exports[`Card should render all passed data 1`] = `
+<article
+  className="card"
+>
+  <img
+    alt=""
+    className="favIcon"
+    onClick={[Function]}
+    src="001-lightsaber.svg"
+  />
+  <h2>
+    Beyonce
+  </h2>
+  <h3 />
+  <h3 />
+  <h3 />
+  <h3 />
+  <Link
+    className="detailsLink"
+    key="Beyonce"
+    to="/undefined/Beyonce"
+  >
+    More Details
+  </Link>
+</article>
+`;

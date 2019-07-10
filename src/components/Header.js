@@ -1,20 +1,27 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import Container from './Container';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import './Header.scss';
 
 const Header = (props) => {
-    const { favorites } = props;
+    const { favorites, restoreHomePage } = props;
 
 
     return (
         <header>
-            <h1>LightSide</h1>
-            <Link to='/favorites'>
+            <Link to='/'>
+                <h1 onClick={() => {restoreHomePage()}}>LightSide</h1>
+            </Link>
+            <Link to='/Favorites'>
                 <button className='faveBtn'>View Favorites: {favorites}</button>
             </Link>
         </header>
     )
+}
+
+Header.propTypes = {
+    favorites: PropTypes.array.isRequired
 }
 
 export default Header;

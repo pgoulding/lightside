@@ -4,8 +4,8 @@ import React from 'react'
   const currentMovie = async () => {
     try {
       const starWarsMovies = await fetch(`https://swapi.co/api/films/`)
-        .then(starWarsMovies => starWarsMovies.json())
-      return starWarsMovies
+        const results = await starWarsMovies.json()
+      return results
     } catch (error) {
       throw Error(error)
     }
@@ -23,5 +23,17 @@ import React from 'react'
     }
   }
 
+  const fetchPeopleDetails = async (page) => {
+    console.log(page)
+    try {
+      let personDetails = {}
+      const result = await fetch(page)
+        .then(response => response.json())
+        return result
+    } catch(error) {
+      throw Error(error)
+    }
+  }
 
-export {currentMovie, fetchPageData}
+
+export {currentMovie, fetchPageData, fetchPeopleDetails}

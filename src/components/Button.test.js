@@ -9,18 +9,22 @@ describe('Button', () => {
 
     beforeEach(() => {
         mockAnimateButtons = jest.fn();
-        wrapper = shallow(<Button 
-            animateButtons={mockAnimateButtons} link='/people' title='people' img='img' /> )
+        wrapper = shallow(
+        <Button 
+            animateButtons={mockAnimateButtons} 
+            link='/people' 
+            title='people' 
+            img='img' /> )
     });
 
     it('should render all props passed down from ButtonContainer', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should update state when animateButtons is called', () => {
-        wrapper.instance().animateButtons()
+    it('should call animateButtons when button is clicked',  () => {
+         wrapper.find('.selectCategoryBtn').simulate('click');
 
-        expect(wrapper.state('selected')).toEqual(true);
+        expect(mockAnimateButtons).toHaveBeenCalled();
     });
 
 })

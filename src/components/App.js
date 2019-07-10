@@ -3,7 +3,7 @@ import MovieIntro from './MovieIntro'
 import Header from './Header'
 import Container from './Container'
 import ButtonContainer from './ButtonContainer';
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import './App.css';
 import DetailsPage from './DetailsPage'
 import sortData from './sortData'
@@ -70,13 +70,15 @@ export class App extends Component {
 
   favoritesPage = (path) => {
     if(this.state.favorites.length) {
-      return  <Container 
+      return  (
+      this.state.selected ? <Container 
       addFavorite={this.addFavorite} 
       removeFavorite={this.removeFavorite}
       favorites={this.state.favorites} 
       data={this.state.favorites} 
       type={'favorites'}
-    />
+    /> :
+    <Redirect to='/' />)
     } else if(path === '/favorites') {
       return (
         <div className='noFavesMessage'>
@@ -86,6 +88,8 @@ export class App extends Component {
     }
   }
 
+  
+
 
   cardsContainer = () => {
     const { people, planets, vehicles, favorites } = this.state;
@@ -93,29 +97,37 @@ export class App extends Component {
 
     return (
       <section>
-        <Route exact path='/people' render={() => 
+       <Route exact path='/people' render={() => (
+         this.state.selected ?
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={people} 
-            type={'people'} /> } />
-
-        <Route exact path='/planets' render={() => 
+            type={'people'} /> : 
+          <Redirect to='/' />
+       )} />
+        <Route exact path='/planets' render={() => (
+          this.state.selected ?
           <Container 
             addFavorite={this.addFavorite} 
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={planets} 
-            type={'planets'} />} />
+            type={'planets'} /> :
+            <Redirect to='/' />            
+            )} />
 
-        <Route exact path='/vehicles' render={() => 
+        <Route exact path='/vehicles' render={() => (
+          this.state.selected ?
           <Container 
               addFavorite={this.addFavorite} 
               removeFavorite={this.removeFavorite}
               favorites={favorites} 
               data={vehicles} 
-              type={'vehicles'} /> }/>
+              type={'vehicles'} /> :
+              <Redirect to='/' />
+              )}/>
 
         <Route exact path='/favorites' render={() => this.favoritesPage('/favorites')} />
 

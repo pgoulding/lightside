@@ -7,9 +7,9 @@
 }
 
 .noFavesMessage {
-  background-color: white;
-  color: #feda4a;
+  /* background-color: white; */
+  color: white;
   font-size: 30px;
   opacity: 0.6;
-  margin-left: 150px;
+  /* margin-left: 150px; */
 }

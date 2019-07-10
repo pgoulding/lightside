@@ -1,9 +1,7 @@
 import React from 'react'
 
 const sortData = (fetchData, category) => {
-  console.log(fetchData)
   if(category === 'people') {
-    console.log('people category')
     return fetchData.map(person => {
       return {
         name: person.name, 

@@ -4,10 +4,31 @@ import App from './App';
 import { shallow } from 'enzyme'
 
 describe('App', () => {
-
   let wrapper;
+  let mockData;
+  let mockFavorite;
+  let mockUpdatePage;
+  let mockFavoriteCard;
+  let mockAnimateButtons;
+  let mockRestoreHomePage;
+  let mockToggleSplash;
+  let mockAddFavorite;
+  let mockRemoveFavorite;
+  
   beforeEach(() => {
     wrapper = shallow(<App />)
+    mockData = [
+      {id: 100, title: 'starwars movie', characters: 'Leia, Yoda, BB8'},
+      {id: 101, title: 'another movie', characters: 'Travis and Leta'}
+    ];
+    mockFavorite = {name: 'Jev', height: 'the perfect height', eye_color: 'green?'};
+    
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockData)
+      })
+    })
   })
 
   it('renders without crashing', () => {
@@ -21,23 +42,25 @@ describe('App', () => {
   });
 
   it('should call fetch with correct url', () => {
+    const expected = 'https://swapi.co/api/films/'
 
-  });
+    window.fetch('https://swapi.co/api/films/')
 
-  it('should return a response if status is ok', () => {
-
-  });
-
-  it('should throw an error if status is not ok', () => {
-
+    expect(window.fetch).toHaveBeenCalledWith(expected)
   });
 
   it('should fetch categories when updatePage is called', () => {
+    wrapper.instance().updatePage();
 
+    expect(window.fetch).toHaveBeenCalled();
   });
 
-  it('should update favorites array if favoriteCard is called', () => {
+  it.only('should update favorites array if favoriteCard is called', () => {
+    wrapper.setState({ favorites: [] });
 
+    wrapper.instance().addFavorite(mockFavorite)
+
+    expect(wrapper.state('favorites'))
   });
 
   it('should update selected state if animateButtons is called', () => {
@@ -59,7 +82,5 @@ describe('App', () => {
   it('should update favorites when removeFavorites is called', () => {
 
   });
-
-  it('should ')
 
 })

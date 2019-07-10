@@ -23,14 +23,15 @@ export class App extends Component {
   }
 
   componentDidMount(){
-    this.findMovie()
+    let randomEpisodeNumber = Math.floor(Math.random() * (6 - 2 + 1)) + 1
+    this.findMovie(randomEpisodeNumber)
     this.updatePage()
   }
 
-  findMovie = () => {
+  findMovie = (randomEpisodeNumber) => {
     currentMovie()
       .then(movie => this.setState({ film: movie.results.find(movie => {
-        return movie.episode_id === Math.floor(Math.random() * (7 - 2 + 1)) + 1
+        return movie.episode_id === randomEpisodeNumber
       })
     })) 
       .catch(err => this.setState({error: err}))

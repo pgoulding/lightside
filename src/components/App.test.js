@@ -21,7 +21,7 @@ describe('App', () => {
       {id: 100, title: 'starwars movie', characters: 'Leia, Yoda, BB8'},
       {id: 101, title: 'another movie', characters: 'Travis and Leta'}
     ];
-    mockFavorite = {name: 'Jev', height: 'the perfect height', eye_color: 'green?'};
+    mockFavorite = {id: 1, name: 'Jev', height: 'the perfect height', eye_color: 'green?'};
     
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
@@ -55,31 +55,40 @@ describe('App', () => {
     expect(window.fetch).toHaveBeenCalled();
   });
 
-  it.only('should update favorites array if favoriteCard is called', () => {
+  it('should update selected state if animateButtons is called', () => {
+    wrapper.setState({ selected: false })
+    wrapper.instance().animateButtons();
+
+    expect(wrapper.state('selected')).toEqual(true)
+  });
+
+  it('should update selected state if restoreHomePage is called', () => {
+    wrapper.setState({ selected: true})
+    wrapper.instance().restoreHomePage();
+
+    expect(wrapper.state('selected')).toEqual(false)
+  });
+
+  it('should update showSplash state when toggleSplash is called', () => {
+    wrapper.setState({ showSplash: true })
+    wrapper.instance().toggleSplash();
+
+    expect(wrapper.state('showSplash')).toEqual(false)
+  });
+
+  it('should update favorites when addFavorite is called', () => {
     wrapper.setState({ favorites: [] });
 
     wrapper.instance().addFavorite(mockFavorite)
 
-    expect(wrapper.state('favorites'))
-  });
-
-  it('should update selected state if animateButtons is called', () => {
-
-  });
-
-  it('should update selected state if restoreHomePage is called', () => {
-
-  });
-
-  it('should update showSplash state when toggleSplash is called', () => {
-
-  });
-
-  it('should update favorites when addFavorite is called', () => {
-
+    expect(wrapper.state('favorites')).toEqual([mockFavorite])
   });
 
   it('should update favorites when removeFavorites is called', () => {
+    wrapper.setState({ favorites: [mockFavorite] })
+    wrapper.instance().removeFavorite(1)
+
+    expect(wrapper.state('favorites')).toEqual([])
 
   });
 

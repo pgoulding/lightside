@@ -43,12 +43,6 @@ export class App extends Component {
     })
   }
 
-  favoriteCard = (name, category) => {
-    let card = this.state[category].find(obj => obj.name === name)
-    card.isFavorited = !card.isFavorited
-    this.setState({[category]: [...this.state[category]]})
-  }
-
   animateButtons = () => {
     this.setState({ selected:true })
   }
@@ -138,47 +132,43 @@ export class App extends Component {
         <Route exact path='/people/:name' render={({ match }) => {
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
-          return specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} />
+          return (
+            this.state.selected ? specificPerson && <DetailsPage data={specificPerson} type={'people'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
 
         <Route exact path='/planets/:name' render={({ match }) => {
           const { name } = match.params
           let specificPlanet = planets.find(planet => name === planet.name)
-          return specificPlanet && <DetailsPage data={specificPlanet} type={'planets'} key={name} />
+          return (
+            this.state.selected ? specificPlanet && <DetailsPage data={specificPlanet} type={'planets'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
 
         <Route exact path='/vehicles/:name' render={({ match }) => {
           const { name } = match.params
           let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
-          return specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} />
+          return (
+            this.state.selected ? specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
 
         <Route exact path='/favorites/:name' render={({ match }) => {
           const { name } = match.params
           let specificFav = favorites.find(fav => name === fav.name)
-          return specificFav && <DetailsPage data={specificFav} type={'favorites'} key={name} />
+          return (
+            this.state.selected ? specificFav && <DetailsPage data={specificFav} type={'favorites'} key={name} /> :
+            <Redirect to='/'/>)
         }} />
       </section>
     )
   }
 
   render() {
-
-
     return (
       <main className='App'>
-<<<<<<< HEAD
-        {!this.state.showSplash && 
-          <Header  
-            restoreHomePage={this.restoreHomePage} 
-            animateButtons={this.animateButtons} 
-            favorites={this.state.favorites.length}
-            />}
-        {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
-=======
-        {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} favorites={this.state.favorites.length}/>}
+        {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} animateButtons={this.animateButtons} favorites={this.state.favorites.length}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} movie={ this.state.film }/>}
->>>>>>> 7062a4bd275289e38e2f7e677f1a6eb1415432c1
         <main className= 'clickedMain' >
         {!this.state.showSplash && <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected} />}
         {!this.state.showSplash && this.cardsContainer()}

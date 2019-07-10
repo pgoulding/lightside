@@ -21,7 +21,7 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-    favorites: PropTypes.array.isRequired,
+    favorites: PropTypes.array,
     restoreHomePage: PropTypes.func.isRequired,
     animateButtons: PropTypes.func.isRequired
 }

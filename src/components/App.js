@@ -7,13 +7,13 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import './App.css';
 import DetailsPage from './DetailsPage'
 import sortData from './sortData'
+import {currentMovie, fetchPageData} from './swapi'
 
 export class App extends Component {
   constructor () {
     super()
     this.state = {
       showSplash: true,
-      film:'',
       selected:false,
       pageNumber: '',
       favorites: []
@@ -21,21 +21,23 @@ export class App extends Component {
   }
 
   componentDidMount(){
-    const starWarsMovies = `https://swapi.co/api/films/`
-    fetch(starWarsMovies)
-    .then(response => response.json())
-    .then(films => this.setState({ film: films.results.find(movie => movie.episode_id === Math.floor(Math.random() * (6 - 2 + 1)) + 1) }))
-    .catch(err => console.error(err))
+    this.findMovie()
     this.updatePage()
+  }
+
+  findMovie = () => {
+    currentMovie()
+      .then(movie => this.setState({ film: movie.results.find(movie => {
+        return movie.episode_id === Math.floor(Math.random() * (7 - 2 + 1)) + 1
+      })
+    })) 
+      .catch(err => this.setState({error: err}))
   }
 
   updatePage = () => {
     let categories = ['people', 'planets', 'vehicles']
-    categories.map(category => {
-      const url = `https://swapi.co/api/${category}/?page=${this.state.pageNumber}`
-      fetch(url)
-        .then(response => response.json())
-        .then(data => sortData(data.results, category))
+    return categories.map(category => {
+      fetchPageData(category)
         .then(swData => this.setState({[category]: swData }))
         .catch(err => this.setState({error: err}))
     })
@@ -120,7 +122,6 @@ export class App extends Component {
          />
       } />
 
-
         <Route exact path='/people/:name' render={({ match }) => {
           const { name } = match.params
           let specificPerson = people.find(person => name === person.name)
@@ -138,9 +139,13 @@ export class App extends Component {
           let specificVehicle = vehicles.find(vehicle => name === vehicle.name)
           return specificVehicle && <DetailsPage data={specificVehicle} type={'vehicles'} key={name} />
         }} />
+
+        <Route exact path='/favorites/:name' render={({ match }) => {
+          const { name } = match.params
+          let specificFav = favorites.find(fav => name === fav.name)
+          return specificFav && <DetailsPage data={specificFav} type={'favorites'} key={name} />
+        }} />
       </section>
-
-
     )
   }
 
@@ -149,7 +154,7 @@ export class App extends Component {
     return (
       <main className='App'>
         {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} favorites={this.state.favorites.length}/>}
-        {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
+        {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} movie={ this.state.film }/>}
         <main className= 'clickedMain' >
         {!this.state.showSplash && this.buttonContainer()}
         {!this.state.showSplash && this.cardsContainer()}

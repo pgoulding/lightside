@@ -91,7 +91,7 @@ export class App extends Component {
 
 
     return (
-      <section>
+      <section className='content-conatiner'>
        <Route exact path='/people' render={() => (
          this.state.selected ?
           <Container 

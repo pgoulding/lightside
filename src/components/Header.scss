@@ -13,7 +13,9 @@ h1 {
 .faveBtn {
     border-radius: 15px;
     display: flex;
-    float: right;
+    position: absolute;
+    top:25px;
+    right:20px;
     font-family: 'AnakinMono', sans-serif;
     font-size: 13px;
     height: 50px;

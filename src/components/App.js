@@ -3,7 +3,7 @@ import MovieIntro from './MovieIntro'
 import Header from './Header'
 import Container from './Container'
 import ButtonContainer from './ButtonContainer';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import './App.css';
 import DetailsPage from './DetailsPage'
 import sortData from './sortData'
@@ -68,7 +68,7 @@ export class App extends Component {
    this.setState({ favorites: filteredFavorites })
   }
 
-  favoritesPage = () => {
+  favoritesPage = (path) => {
     if(this.state.favorites.length) {
       return  <Container 
       addFavorite={this.addFavorite} 
@@ -77,7 +77,7 @@ export class App extends Component {
       data={this.state.favorites} 
       type={'favorites'}
     />
-    } else {
+    } else if(path === '/favorites') {
       return (
         <div className='noFavesMessage'>
           <h2>To display, no favorites you have.</h2>
@@ -86,12 +86,10 @@ export class App extends Component {
     }
   }
 
-  buttonContainer = () => {
-      return <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected}/>
-    }
 
   cardsContainer = () => {
     const { people, planets, vehicles, favorites } = this.state;
+
 
     return (
       <section>
@@ -101,7 +99,7 @@ export class App extends Component {
             removeFavorite={this.removeFavorite}
             favorites={favorites} 
             data={people} 
-            type={'people'} />} />
+            type={'people'} /> } />
 
         <Route exact path='/planets' render={() => 
           <Container 
@@ -113,13 +111,13 @@ export class App extends Component {
 
         <Route exact path='/vehicles' render={() => 
           <Container 
-            addFavorite={this.addFavorite} 
-            removeFavorite={this.removeFavorite}
-            favorites={favorites} 
-            data={vehicles} 
-            type={'vehicles'} />} />
+              addFavorite={this.addFavorite} 
+              removeFavorite={this.removeFavorite}
+              favorites={favorites} 
+              data={vehicles} 
+              type={'vehicles'} /> }/>
 
-        <Route exact path='/favorites' render={() => this.favoritesPage()} />
+        <Route exact path='/favorites' render={() => this.favoritesPage('/favorites')} />
 
 
         <Route exact path='/people/:name' render={({ match }) => {
@@ -147,12 +145,13 @@ export class App extends Component {
 
   render() {
 
+
     return (
       <main className='App'>
         {!this.state.showSplash && <Header restoreHomePage={this.restoreHomePage} favorites={this.state.favorites.length}/>}
         {this.state.showSplash && this.state.film && <MovieIntro toggleSplash={this.toggleSplash} films={ this.state.film }/>}
         <main className= 'clickedMain' >
-        {!this.state.showSplash && this.buttonContainer()}
+        {!this.state.showSplash && <ButtonContainer animateButtons={this.animateButtons} selected={this.state.selected} />}
         {!this.state.showSplash && this.cardsContainer()}
         </main>
       </main>

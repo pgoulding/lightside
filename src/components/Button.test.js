@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Button from './Button'
-import { idText } from 'typescript';
+
 
 describe('Button', () => {
     let wrapper;
@@ -9,21 +9,18 @@ describe('Button', () => {
 
     beforeEach(() => {
         mockAnimateButtons = jest.fn();
-        wrapper = shallow(
-         <Button 
-            link='/people'
-            title='people'
-            img='img'
-            animateButtons={mockAnimateButtons}
-        />)
-    })
+        wrapper = shallow(<Button 
+            animateButtons={mockAnimateButtons} link='/people' title='people' img='img' /> )
+    });
 
     it('should render all props passed down from ButtonContainer', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should call animateButtons when clicked', () => {
-    
+    it('should update state when animateButtons is called', () => {
+        wrapper.instance().animateButtons()
+
+        expect(wrapper.state('selected')).toEqual(true);
     });
 
 })

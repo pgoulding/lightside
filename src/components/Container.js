@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './Container.scss'
 
 
-const Container = ({ data, type, favorites, addFavorite, removeFavorite, location}) => {
+const Container = ({ data, type, favorites, addFavorite, removeFavorite }) => {
     let swData = data.map(ele => {
         return <Card 
             key={ele.id}

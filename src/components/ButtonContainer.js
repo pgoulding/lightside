@@ -48,7 +48,7 @@ const ButtonContainer = ({ selected, animateButtons }) => {
 }
 
 ButtonContainer.propTypes = {
-    animateButtons: PropTypes.func.isRequired
+    animateButtons: PropTypes.func
 }
 
 export default ButtonContainer;

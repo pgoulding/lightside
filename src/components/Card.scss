@@ -1,6 +1,6 @@
 .card,
 .card-detail {
-    background-color: #010c4c;
+    background-color: #263957;
     border-radius: 8px;
     color: white;
     margin: 15px;
@@ -10,13 +10,13 @@
 }
 
 .card {
-    width: 200px;
+    // width: 200px;
 }
 
 .card:hover {
+    box-shadow: 1px 1px 1px 1px  #646370;
     cursor: pointer;
     transform: scale(1.04);
-    transform: rotate(2deg);
     transition: all ease-in-out .3s;
   }
 
@@ -27,5 +27,12 @@
 .favIcon {
     float: right;
     height: 30px;
-    margin: 15px;
+    // margin: 15px;
+}
+
+.detailsLink,
+.back-btn {
+    color: #FEF1CD;
+    font-family: 'AnakinMono', sans-serif;
+    font-size: 14px;
 }

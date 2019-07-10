@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render all props passed down from ButtonContainer 1`] = `
+<Link
+  to="/people"
+>
+  <button
+    className="selectCategoryBtn"
+    onClick={[Function]}
+  >
+    <span
+      className="selectCategoryBtnText"
+    >
+      people
+    </span>
+    <img
+      alt=""
+      className="icon"
+      src="img"
+    />
+  </button>
+</Link>
+`;

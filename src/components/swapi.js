@@ -12,15 +12,14 @@ import React from 'react'
   }
   
   const fetchPageData = async (category) => {
-    try {
       const url = `https://swapi.co/api/${category}/?page=`
       const result = await fetch(url)
-        .then(response => response.json())
-        .then(data => sortData(data.results, category))
-        return result
-    } catch (error) {
-      throw Error(error)
-    }
+      if(!result.ok) {
+        throw Error('failed to fetch')
+      }
+      const response = await result.json()
+      const data = await sortData(response.results, category)
+      return data
   }
 
   const fetchPeopleDetails = async (page) => {

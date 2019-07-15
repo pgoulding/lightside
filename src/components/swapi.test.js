@@ -1,6 +1,6 @@
 import { currentMovie, fetchPageData, fetchPeopleDetails } from './swapi'
 import { shallow, mount } from 'enzyme'
-import { peopleData1 } from '../test-data/people-data-pg1'
+import peopleData1 from '../test-data/people-data-pg1'
 import { person } from '../test-data/mockPerson'
 import films from '../test-data/film-data'
 import React from 'react'
@@ -24,15 +24,21 @@ describe('swapi', () => {
       })
     })
 
-    it('HAPPY: should be able to fetch the ideas form the server', () => {
-      expect(fetchPageData('people')).resolves.toBe(mockData)
+    it('HAPPY: should be able to fetch the ideas form the server', async () => {
+      expect(await fetchPageData('people')).toEqual(mockData)
     })
 
     it('SAD: should be able to return an error on fecthPageData', async () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false,
+        })
+      })
+
       try {
         await fetchPageData();
       } catch (error) {
-        expect(error).toMatch('error');
+        expect(error).toEqual(error);
       }
     })
 

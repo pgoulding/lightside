@@ -7,13 +7,12 @@
 }
 
 .noFavesMessage {
-  /* background-color: white; */
   color: white;
   font-size: 30px;
   opacity: 0.6;
-  /* margin-left: 150px; */
 }
+
 .content-conatiner {
-  width: -webkit-fill-available;
+  width: 100%;
 }
 

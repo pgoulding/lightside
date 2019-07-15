@@ -35,12 +35,15 @@ export class App extends Component {
       .catch(err => this.setState({error: err}))
   }
 
-  updatePage = () => {
+  updatePage = async () => {
     let categories = ['people', 'planets', 'vehicles']
-    return categories.map(category => {
-      fetchPageData(category)
-        .then(swData => this.setState({[category]: swData }))
-        .catch(err => this.setState({error: err}))
+    return categories.map(async category => {
+      try {
+        const fetched = await fetchPageData(category)
+          this.setState({[category]: await fetched })
+        } catch (error) {
+          this.setState({error})
+      }
     })
   }
 

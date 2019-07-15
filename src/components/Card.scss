@@ -3,14 +3,8 @@
     background-color: #263957;
     border-radius: 8px;
     color: white;
-    margin: 15px;
     opacity: 0.9;
     padding: 10px;
-    // display: inline-block;
-}
-
-.card {
-    // width: 200px;
 }
 
 .card:hover {
@@ -22,12 +16,12 @@
 
   .card-detail {
       width: auto; 
+      margin: 15px;
   }
 
 .favIcon {
     float: right;
     height: 30px;
-    // margin: 15px;
 }
 
 .detailsLink,

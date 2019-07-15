@@ -3,28 +3,22 @@
     justify-content: space-around;
     padding: 30px;
     width: 100%;
-  
+    flex-wrap: wrap;
   }
   
-  .clickedContainer {
-    flex-direction: column;
-    transition: 2s;
-    width: 30%;
-    float: left;
-    margin-left: 10px;
-    button {
-        height: 200px;
-        width: 200px;
-        margin-bottom:10px;
-    }
+.clickedContainer {
+  flex-direction: column;
+  transition: 1.5s;
+  width: 200px;
+  float: left;
+  margin-left: 10px;
+  button {
+      height: 200px;
+      width: 200px;
+      margin-bottom:10px;
   }
-  
-  .clickedMain {
-    display: flex;
-  }
-  
-//   .active {
-//     color: #feda4a;
-//     height: 50px;
-//     width: 50px;
-//   }
+}
+
+.clickedMain {
+  display: flex;
+}

@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/lightside/static/css/main.65abd032.chunk.css",
+    "main.js": "/lightside/static/js/main.c759fe19.chunk.js",
+    "main.js.map": "/lightside/static/js/main.c759fe19.chunk.js.map",
+    "runtime~main.js": "/lightside/static/js/runtime~main.30f30001.js",
+    "runtime~main.js.map": "/lightside/static/js/runtime~main.30f30001.js.map",
+    "static/css/2.d1f26340.chunk.css": "/lightside/static/css/2.d1f26340.chunk.css",
+    "static/js/2.fec0a9bb.chunk.js": "/lightside/static/js/2.fec0a9bb.chunk.js",
+    "static/js/2.fec0a9bb.chunk.js.map": "/lightside/static/js/2.fec0a9bb.chunk.js.map",
+    "index.html": "/lightside/index.html",
+    "precache-manifest.06293d9e3369242b109ff276a3e7ef59.js": "/lightside/precache-manifest.06293d9e3369242b109ff276a3e7ef59.js",
+    "service-worker.js": "/lightside/service-worker.js",
+    "static/css/2.d1f26340.chunk.css.map": "/lightside/static/css/2.d1f26340.chunk.css.map",
+    "static/css/main.65abd032.chunk.css.map": "/lightside/static/css/main.65abd032.chunk.css.map",
+    "static/media/001-lightsaber.svg": "/lightside/static/media/001-lightsaber.7176f8c0.svg",
+    "static/media/002-game.svg": "/lightside/static/media/002-game.be0942c6.svg",
+    "static/media/002-star-wars.svg": "/lightside/static/media/002-star-wars.9c3db68b.svg",
+    "static/media/006-human.svg": "/lightside/static/media/006-human.ced68ff8.svg",
+    "static/media/007-universe.svg": "/lightside/static/media/007-universe.277ddc1a.svg",
+    "static/media/App.css": "/lightside/static/media/nasa-Q1p7bh3SHj8-unsplash.67af05e1.jpg"
+  }
+}

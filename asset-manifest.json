@@ -1,23 +1,31 @@
 {
   "files": {
-    "main.css": "/lightside/static/css/main.b6978bc7.chunk.css",
-    "main.js": "/lightside/static/js/main.c759fe19.chunk.js",
-    "main.js.map": "/lightside/static/js/main.c759fe19.chunk.js.map",
-    "runtime~main.js": "/lightside/static/js/runtime~main.30f30001.js",
-    "runtime~main.js.map": "/lightside/static/js/runtime~main.30f30001.js.map",
-    "static/css/2.d1f26340.chunk.css": "/lightside/static/css/2.d1f26340.chunk.css",
-    "static/js/2.fec0a9bb.chunk.js": "/lightside/static/js/2.fec0a9bb.chunk.js",
-    "static/js/2.fec0a9bb.chunk.js.map": "/lightside/static/js/2.fec0a9bb.chunk.js.map",
+    "main.css": "/lightside/static/css/main.a701ac46.chunk.css",
+    "main.js": "/lightside/static/js/main.b707bb33.chunk.js",
+    "main.js.map": "/lightside/static/js/main.b707bb33.chunk.js.map",
+    "runtime-main.js": "/lightside/static/js/runtime-main.9bb3a67e.js",
+    "runtime-main.js.map": "/lightside/static/js/runtime-main.9bb3a67e.js.map",
+    "static/css/2.4d9eae82.chunk.css": "/lightside/static/css/2.4d9eae82.chunk.css",
+    "static/js/2.11dcb87d.chunk.js": "/lightside/static/js/2.11dcb87d.chunk.js",
+    "static/js/2.11dcb87d.chunk.js.map": "/lightside/static/js/2.11dcb87d.chunk.js.map",
     "index.html": "/lightside/index.html",
-    "precache-manifest.b76ac1a9e91491edbca243d4f00d8342.js": "/lightside/precache-manifest.b76ac1a9e91491edbca243d4f00d8342.js",
+    "precache-manifest.78f5ad9c1805b99fc663843042cee2b6.js": "/lightside/precache-manifest.78f5ad9c1805b99fc663843042cee2b6.js",
     "service-worker.js": "/lightside/service-worker.js",
-    "static/css/2.d1f26340.chunk.css.map": "/lightside/static/css/2.d1f26340.chunk.css.map",
-    "static/css/main.b6978bc7.chunk.css.map": "/lightside/static/css/main.b6978bc7.chunk.css.map",
+    "static/css/2.4d9eae82.chunk.css.map": "/lightside/static/css/2.4d9eae82.chunk.css.map",
+    "static/css/main.a701ac46.chunk.css.map": "/lightside/static/css/main.a701ac46.chunk.css.map",
+    "static/js/2.11dcb87d.chunk.js.LICENSE.txt": "/lightside/static/js/2.11dcb87d.chunk.js.LICENSE.txt",
     "static/media/001-lightsaber.svg": "/lightside/static/media/001-lightsaber.7176f8c0.svg",
     "static/media/002-game.svg": "/lightside/static/media/002-game.be0942c6.svg",
     "static/media/002-star-wars.svg": "/lightside/static/media/002-star-wars.9c3db68b.svg",
     "static/media/006-human.svg": "/lightside/static/media/006-human.ced68ff8.svg",
     "static/media/007-universe.svg": "/lightside/static/media/007-universe.277ddc1a.svg",
     "static/media/App.css": "/lightside/static/media/nasa-Q1p7bh3SHj8-unsplash.67af05e1.jpg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9bb3a67e.js",
+    "static/css/2.4d9eae82.chunk.css",
+    "static/js/2.11dcb87d.chunk.js",
+    "static/css/main.a701ac46.chunk.css",
+    "static/js/main.b707bb33.chunk.js"
+  ]
 }

@@ -1,27 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "60065dc19d9fc194c757cc27221b8972",
+    "revision": "b76051e6274f898fff9076fa2f4c5c63",
     "url": "/lightside/index.html"
   },
   {
-    "revision": "da4a0f398dfaf9d36c44",
-    "url": "/lightside/static/css/2.d1f26340.chunk.css"
+    "revision": "c9858d3d7eac991da33e",
+    "url": "/lightside/static/css/2.4d9eae82.chunk.css"
   },
   {
-    "revision": "06df91b9af44a63946b7",
-    "url": "/lightside/static/css/main.b6978bc7.chunk.css"
+    "revision": "0b8ac944cac2949a877a",
+    "url": "/lightside/static/css/main.a701ac46.chunk.css"
   },
   {
-    "revision": "da4a0f398dfaf9d36c44",
-    "url": "/lightside/static/js/2.fec0a9bb.chunk.js"
+    "revision": "c9858d3d7eac991da33e",
+    "url": "/lightside/static/js/2.11dcb87d.chunk.js"
   },
   {
-    "revision": "06df91b9af44a63946b7",
-    "url": "/lightside/static/js/main.c759fe19.chunk.js"
+    "revision": "dbe5ca7a82c728776bb536c3d2d64135",
+    "url": "/lightside/static/js/2.11dcb87d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ecdc0bcbd4ae9fd720f2",
-    "url": "/lightside/static/js/runtime~main.30f30001.js"
+    "revision": "0b8ac944cac2949a877a",
+    "url": "/lightside/static/js/main.b707bb33.chunk.js"
+  },
+  {
+    "revision": "384f75f623620cbc9e4e",
+    "url": "/lightside/static/js/runtime-main.9bb3a67e.js"
   },
   {
     "revision": "7176f8c090f57e9e69eedba7b5c41d4f",
